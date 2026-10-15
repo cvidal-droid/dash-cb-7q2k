@@ -1,0 +1,823 @@
+<!doctype html><html><head><meta charset=utf8><meta name="robots" content="noindex, nofollow, noarchive"><meta name="googlebot" content="noindex, nofollow"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><title>Corberó · Dashboard de cuenta · Sep 2026</title></head><body>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+:root{color-scheme:light;--or:#FF9900;--bk:#1A1A1A;--tx:#3F3F3F;--t2:#6b6b65;--ln:#e4e4e4;--ok:#1a8a5a;--bad:#c0392b;--bg:#fafafa}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Poppins',system-ui,'Segoe UI Variable','Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;color:var(--tx);background:var(--bg);font-size:14.5px;line-height:1.55}
+.hero{background:var(--bk);color:#fff;padding:24px 34px 0}
+.logo{font-weight:800;font-size:19px}.logo span{color:var(--or)}
+.hero h1{font-size:25px;font-weight:800;margin-top:6px}
+.hero .sub{color:#b9b9b4;font-size:12.5px;margin-top:5px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{background:#2b2b2b;border:1px solid #3d3d3d;border-radius:20px;padding:5px 13px;font-size:12px;color:#e6e6e2}
+.chip b{color:var(--or)}
+.tabs{display:flex;gap:4px;margin-top:18px;flex-wrap:wrap}
+.tab{background:#2b2b2b;color:#c9c9c4;border:none;border-radius:9px 9px 0 0;padding:11px 18px;font-family:inherit;
+font-size:13px;font-weight:600;cursor:pointer}
+.tab.on{background:var(--bg);color:var(--bk)}
+.wrap{max-width:1120px;margin:0 auto;padding:26px 34px 60px}
+.pane{display:none}.pane.on{display:block}
+.bar{display:flex;gap:16px;align-items:center;flex-wrap:wrap;background:#fff;border:1px solid var(--ln);
+border-radius:11px;padding:12px 16px;margin-bottom:20px}
+.bar .lb{font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--t2);font-weight:700}
+.seg{display:flex;gap:3px;background:#f1f1ef;border-radius:8px;padding:3px}
+.seg button{background:none;border:none;border-radius:6px;padding:6px 13px;font-family:inherit;font-size:12.5px;
+font-weight:600;color:var(--t2);cursor:pointer}
+.seg button.on{background:var(--or);color:#fff}
+h2{font-size:18.5px;font-weight:800;color:var(--bk);margin-top:30px}
+h2:first-child{margin-top:0}
+.note{font-size:12.5px;color:var(--t2);margin-top:3px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:11px;margin-top:14px}
+.k{background:#fff;border:1px solid var(--ln);border-radius:11px;padding:13px 15px}
+.k .t{font-size:10.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--t2);font-weight:700}
+.k .v{font-size:23px;font-weight:800;color:var(--bk);margin-top:2px;line-height:1.2}
+.k .d{font-size:11.5px;margin-top:3px;font-weight:600}
+.up{color:var(--ok)}.dn{color:var(--bad)}.fl{color:var(--t2)}
+.k.pend .v{color:var(--t2);font-size:15px;font-weight:700}
+.card{background:#fff;border:1px solid var(--ln);border-radius:12px;padding:18px 20px;margin-top:14px;overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}
+th,td{padding:7px 9px;border-bottom:1px solid var(--ln);text-align:right;white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+thead th{font-size:10.5px;text-transform:uppercase;letter-spacing:.4px;color:var(--t2);font-weight:700}
+tr.tot td{background:#f4f4f2;font-weight:700}
+.pend{background:#fff6e8;color:#8a6d1f;font-weight:600}
+.gr2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+@media(max-width:900px){.gr2{grid-template-columns:1fr}.wrap,.hero{padding-left:16px;padding-right:16px}}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.lgd{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;font-size:12px;color:var(--t2)}
+.lgd i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.warn{background:#fff6e8;border:1px solid #f0d9a8;border-radius:9px;padding:12px 16px;margin-top:14px;
+font-size:13px;color:#6f5720}
+.info{background:#eef3f7;border:1px solid #c3d4e0;border-radius:9px;padding:12px 16px;margin-top:14px;
+font-size:13px;color:#22506b}
+.prog{height:9px;background:#eee;border-radius:5px;overflow:hidden;margin-top:8px}
+.prog i{display:block;height:100%;background:var(--or)}
+.foot{text-align:center;color:var(--t2);font-size:11.5px;margin-top:34px;border-top:1px solid var(--ln);padding-top:16px;line-height:1.8}
+
+.bar.vista{position:sticky;top:0;z-index:20;box-shadow:0 3px 10px rgba(0,0,0,.08);border-color:#d8d8d4}
+.vtxt{font-size:12.5px;color:var(--t2)}
+.chg{font-size:11.5px;font-weight:600;margin-left:4px;white-space:nowrap}
+.chg.up{color:var(--ok)}.chg.dn{color:var(--bad)}.chg.fl{color:var(--t2)}
+.dot{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:7px;vertical-align:-1px}
+.ac-ok{color:var(--ok);font-weight:700}.ac-md{color:#b7791f;font-weight:700}.ac-bad{color:var(--bad);font-weight:700}
+.ayuda{background:#fff;border:1px solid var(--ln);border-left:4px solid var(--or);border-radius:9px;padding:12px 16px;margin-top:14px;font-size:13px}
+.ayuda ul{margin:6px 0 8px 18px}.ayuda li{margin:3px 0}
+.tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;padding:2px 9px;border-radius:10px;margin-right:6px;vertical-align:1px}
+.tag.bad{background:#fbe4e1;color:var(--bad)}.tag.ok{background:#dff3ea;color:var(--ok)}.tag.mid{background:#fdf0d5;color:#8a6d1f}
+#tblEvo table{font-size:12px}#tblEvo th,#tblEvo td{padding:6px 5px}#porCanal table{font-size:12.5px}
+#tip{position:fixed;z-index:60;pointer-events:none;display:none;background:#1A1A1A;color:#fff;font-size:12px;line-height:1.45;padding:7px 11px;border-radius:8px;box-shadow:0 4px 14px rgba(0,0,0,.28);max-width:270px}
+.lgd i[style*="rotate"]{border-radius:0}
+details.mas{margin-top:14px}details.mas summary{cursor:pointer;font-weight:600;color:var(--t2);padding:8px 0;font-size:13px}
+
+.gr3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+@media(max-width:900px){.gr3{grid-template-columns:1fr}}</style>
+<div id="tip"></div>
+<div class="hero">
+  <div class="logo">roicos<span>.</span></div>
+  <h1>Corberó · Dashboard de cuenta</h1>
+  <div class="sub">Publicidad y negocio · septiembre 2026</div>
+  <div class="chips">
+    <div class="chip">Objetivo ACOS <b>&lt;15%</b></div>
+    <div class="chip">Estrategia híbrida · <b>~60% Vendor / ~40% Seller</b></div>
+    <div class="chip" id="chipObj">Objetivo <b>10,1M</b></div>
+  </div>
+  <div class="tabs">
+    <button class="tab on" data-p="p1">📊 Dashboard mensual</button>
+    <button class="tab" data-p="p2">📈 Evolución del año</button>
+    <button class="tab" data-p="p3">🏆 Visibilidad</button>
+    <button class="tab" data-p="p4">📣 Publicidad por categoría</button>
+  </div>
+</div>
+<div class="wrap">
+  <div class="bar vista" id="barVista">
+    <span class="lb">Vista</span>
+    <div class="seg" id="segC">
+      <button class="on" data-c="glob">Global</button>
+      <button data-c="vendor">Vendor · Corberó</button>
+      <button data-c="seller">Seller · Tuelektro</button>
+    </div>
+    <span class="vtxt" id="vtxt"></span>
+  </div>
+
+  <div class="pane on" id="p1">
+    <h2>Publicidad del mes · Sep 26</h2>
+    <div class="note" id="notaAds"></div>
+    <div id="titular"></div>
+    <div class="kpis" id="kpis"></div>
+    <div id="porCanal"></div>
+    <div class="gr2">
+      <div class="card"><h2 style="font-size:15px">Ventas por publicidad por canal · septiembre</h2><div id="repV"></div></div>
+      <div class="card"><h2 style="font-size:15px">Inversión publicitaria por canal · septiembre</h2><div id="repI"></div></div>
+    </div>
+
+    <h2>Negocio del mes · Sep 26 <span class="tag mid" id="tagProv"></span></h2>
+    <div class="note">Lo que vende Corberó en el mes, con y sin publicidad, y cuánto pesa la inversión publicitaria sobre esas ventas (TACOS). La facturación se mide, como en todos los reportes, con el sell-in de Vendor (lo que Amazon compra a Corberó) más las ventas del Seller sin IVA menos el 30 %.</div>
+    <div class="note" id="provNota"></div>
+    <div id="pendNote"></div>
+    <div class="kpis" id="kpisNeg"></div>
+
+    <h2>Cumplimiento de objetivos (2026)</h2>
+    <div class="note">Lo que factura Corberó — el sell-in de Vendor más lo que vende el Seller sin IVA menos el 30 % — frente a los objetivos mensuales acordados. Objetivo anual 10,1M€.</div>
+    <div id="objBlock"></div>
+    <div class="card"><h2 style="font-size:15px">Facturación real vs objetivo mensual</h2>
+      <div class="note" id="notaObj"></div><div id="chObj"></div></div>
+
+    <h2>Reparto de las ventas por publicidad</h2>
+    <div class="note" id="notaCat"></div>
+    <div class="card"><div id="chCat"></div></div>
+  </div>
+
+  <div class="pane" id="p2">
+    <h2>Peso de la publicidad en el negocio</h2>
+    <div class="note">Cuánto de lo que se vende llega a través de la publicidad, y cuánto cuesta conseguirlo.</div>
+    <div class="card"><h2 style="font-size:15px" id="tPeso"></h2><div class="note" id="nPeso"></div><div id="chPeso"></div></div>
+    <div class="card"><h2 style="font-size:15px" id="tTacos"></h2>
+      <div class="note">TACOS: coste de la publicidad sobre la venta total al consumidor. ACOS: coste de la publicidad sobre las ventas que genera. Objetivo: 15%.</div><div id="chTacos"></div></div>
+
+    <h2>Evolución mes a mes</h2>
+    <div class="note" id="nEvo"></div>
+    <div class="card"><div id="tblEvo"></div></div>
+    <div class="card"><h2 style="font-size:15px" id="tPar"></h2>
+      <div class="note">Cada mes tiene dos columnas con la misma escala: ventas por publicidad (izquierda) e inversión publicitaria (derecha), con el importe encima. La línea negra es el ACOS del mes (eje derecho, en %) y la línea roja discontinua marca el objetivo del 15%. Pasa el ratón por encima para ver el dato.</div>
+      <div id="chPar"></div></div>
+    <details class="mas"><summary>Más gráficos: ROAS y coste por clic</summary>
+      <div class="gr2">
+        <div class="card"><h2 style="font-size:15px">Retorno de la inversión (ROAS)</h2><div class="note">Ventas por publicidad por cada euro invertido</div><div id="chRoas"></div></div>
+        <div class="card"><h2 style="font-size:15px">Coste por clic (€)</h2><div id="chCpc"></div></div>
+      </div>
+    </details>
+
+    <h2>Comparativa con el año anterior</h2>
+    <div class="note" id="yoyNota"></div>
+    <div id="yoyBox"></div>
+
+    <h2>Reparto por canal · Vendor vs Seller</h2>
+    <div class="note">Cómo se reparte la inversión y las ventas por publicidad entre los dos canales · referencia 60/40.</div>
+    <div class="gr2">
+      <div class="card"><h2 style="font-size:15px">Inversión publicitaria por canal</h2><div id="chSplitI"></div></div>
+      <div class="card"><h2 style="font-size:15px">Ventas por publicidad por canal</h2><div id="chSplitV"></div></div>
+    </div>
+    <div id="splitTxt"></div>
+
+    <h2>Reparto de facturación · Vendor vs Seller</h2>
+    <div class="note">Reparto de la facturación entre los dos canales · marco de referencia 60% Vendor / 40% Seller</div>
+    <div class="card"><div id="chDep"></div></div>
+    <div id="depTxt"></div>
+  </div>
+
+  <div class="pane" id="p3">
+    <h2>Cuota de visibilidad en el mercado</h2>
+    <div class="note">Qué porcentaje de los resultados de búsqueda de cada categoría ocupa la marca, frente al resto de marcas que compiten en el mismo espacio. Septiembre 2026.
+    Se suman las dos grafías de la marca (Corbero y Corberó): en Lavado y Cocción parte de los anuncios aparece con tilde.
+    <b>Natural</b> es lo que ocupamos sin pagar y <b>pagada</b> lo que ocupamos con publicidad. La cuota se mide sobre la página de resultados de Amazon y no distingue si el anuncio sale por la cuenta Vendor o por la Seller: es una sola para las dos.</div>
+    <div class="card"><div id="sovResumen"></div></div>
+    <div class="info" style="margin-top:12px"><b>Septiembre ha sido el mes de Lavado.</b> La cuota total cae del 7,8% al 5,6% y pasamos del 5.º al 7.º puesto: cae la posición natural (del 8,5% al 5,5%) y la pagada, lejos de compensarlo, también baja (del 6,6% al 5,6%). <b>Frío</b> (del 12,7% al 16,0%) y <b>Cocción</b> (del 3,7% al 4,6%) suben.</div>
+    <div id="sovFormato"></div>
+
+    <h2>Cómo ha evolucionado la cuota natural y la pagada</h2>
+    <div class="note">De enero a septiembre de 2026, con la misma medición todos los meses. Pasa el ratón por encima de los puntos para ver el dato y su variación frente al mes anterior.</div>
+    <div class="gr3" id="sovLineas"></div>
+    <div id="sovLgd"></div>
+
+    <h2>Mes a mes, con la inversión y el ACOS de cada cuenta</h2>
+    <div class="note">Elige una categoría. La visibilidad es de la marca (las dos cuentas juntas); la inversión y el ACOS sí se separan en Vendor y en Seller.</div>
+    <div class="card"><div class="seg" id="segSov"></div><div id="sovDetalle" style="margin-top:12px;overflow-x:auto"></div></div>
+    <div class="info"><span class="tag bad">Lavado · el problema del mes</span> La cuota baja del 7,8% al 5,6% y pasamos del 5.º al 7.º puesto de 449 marcas. Caen la posición natural (del 8,5% al 5,5%) y, en menor medida, la pagada (del 6,6% al 5,6%), y bajan las cuatro búsquedas principales: lavadora (8,4% → 4,9%), lavavajillas (7,1% → 5,1%), secadora (8,2% → 5,9%) y lavadora secadora (11,7% → 9,1%). En publicidad pasa lo mismo: con una inversión parecida (4.619 € frente a 4.711 €), las ventas por publicidad caen un 42% (de 83.594 € a 48.639 €) y el ACOS de la categoría pasa del 5,6% al 9,5% (Vendor del 4,2% al 7,2%, Seller del 7,3% al 13,6%).<br><br><span class="tag ok">Frío · se refuerza</span> Seguimos siendo la primera de las 137 marcas, con una cuota del 16,0% (en agosto, 12,7%), y la distancia con la segunda (Hisense, 12,1%) pasa de 0,5 a 3,9 puntos. Suben las dos fuentes: la posición natural del 15,6% al 18,5% y la pagada del 7,7% al 12,1%. La pagada es ya casi el triple de la de julio (4,0%), mientras que la natural todavía no ha recuperado el 19,6% de julio.<br><br><span class="tag mid">Cocción · sube en el agregado, cae en las de gas</span> La cuota de la categoría pasa del 3,7% al 4,6% y del 10.º al 5.º puesto, pero cae en cocina de gas con horno (27,8% → 21,2%), cocinas de gas (19,5% → 14,7%) y horno de gas (17,4% → 12,1%). De las nueve búsquedas que seguimos solo suben dos: microondas (2,1% → 4,2%), una de las de mayor volumen, y vitrocerámica (11,4% → 12,2%). La posición pagada se multiplica por 1,7 (del 2,1% al 3,6%) y el ACOS del Seller pasa del 10,3% al 16,7%, por encima del objetivo del 15%.</div>
+
+    <h2>Frente a los principales competidores</h2>
+    <div class="note">Cuota de visibilidad de cada marca en la categoría. Entre paréntesis, la variación frente a agosto en puntos de cuota (pp).</div>
+    <div id="sovComp"></div>
+    <h2>Búsqueda a búsqueda</h2>
+    <div class="note">Dónde ocupamos posición y dónde apenas aparecemos, en las búsquedas que seguimos.</div>
+    <div class="ayuda"><b>Cómo leer esta tabla.</b> Cuando alguien busca una de estas palabras en Amazon, ve resultados orgánicos (los que aparecen sin pagar) y anuncios.<ul><li><b>Cuota total</b>: de todos los resultados de esa búsqueda, orgánicos y anuncios, qué porcentaje son productos nuestros.</li><li><b>Cuota natural</b>: lo mismo, pero contando solo los resultados orgánicos, los que ocupamos sin pagar.</li><li>Entre paréntesis, cuánto ha cambiado la cuota total frente a agosto, en puntos de cuota (pp).</li></ul><b>Ejemplo:</b> en «frigorífico» el 19,7% de los resultados son nuestros (cuota total) y el 20,1% de los resultados orgánicos también (cuota natural).<br><b>Situación:</b> <i>Prácticamente ausentes</i> (cuota total por debajo del 2%) · <i>Posición baja</i> (entre el 2% y el 5%) · <i>Posición natural fuerte</i> (cuota natural desde el 14%) · <i>Mitad natural, mitad pagada</i> (natural y pagada desde el 10%) · <i>Buena posición</i> (cuota natural desde el 8% o total desde el 6%) · <i>Posición media</i> (el resto).</div>
+    <div class="card"><div id="sovKw"></div></div>
+  </div>
+
+  <div class="pane" id="p4">
+    <h2>Resultados de publicidad por categoría</h2>
+    <div class="note" id="notaCatBar"></div>
+    <div class="warn" style="margin-top:12px"><b>Todas las cifras de esta pestaña son de publicidad.</b>
+    La inversión es lo que se destina a anuncios en cada categoría, y las ventas son únicamente
+    las que genera esa inversión — no la venta total de la categoría.</div>
+    <div class="card"><h2 style="font-size:15px">Ventas por publicidad e inversión publicitaria por categoría</h2>
+      <div class="note">Cada mes tiene dos columnas apiladas por categoría: ventas por publicidad (izquierda, eje izquierdo) e inversión publicitaria (derecha, más clara, eje derecho), con el total encima. Cada una tiene su propia escala para que la inversión se lea bien, así que no se comparan por altura. El ACOS de cada categoría está en el gráfico de abajo. Pasa el ratón por encima para ver el importe y el porcentaje de cada categoría.</div>
+      <div id="chCatPar"></div></div>
+    <div class="card"><h2 style="font-size:15px">ACOS por categoría</h2>
+      <div class="note">Confort y Deshumidificador no se incluyen: son estacionales, con uno o dos meses de datos y un ACOS desproporcionado (el del deshumidificador de enero llegó al 491%).</div>
+      <div id="chCatAcos"></div></div>
+    <div class="card"><h2 style="font-size:15px">Tabla por categoría</h2><div id="tblCat"></div></div>
+  </div>
+
+  <div class="foot" id="foot"></div>
+</div>
+<script>
+const D = {"M": ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep"], "vendor": {"inv": [29734, 23757, 21981, 16005, 15749, 12768, 13367, 11920, 14352], "ven": [256994, 224108, 272636, 256927, 296630, 242278, 264713, 180933, 201805], "ped": [1775, 1334, 1756, 1727, 2231, 1515, 1379, 990, 1346], "clk": [78918, 64821, 59808, 45188, 41333, 29632, 31277, 27808, 34773], "imp": [9981113, 7454533, 7240925, 5340400, 4822759, 4257114, 4388373, 4540926, 4891874], "acos": [11.569919920309424, 10.60069252324772, 8.062398215936266, 6.229395898445862, 5.30930789198665, 5.269979114901064, 5.049619776890443, 6.588228921928689, 7.111692289045187], "roas": [8.643102172597027, 9.433345961190385, 12.403257358627906, 16.052920962199313, 18.834846656930598, 18.975407268170425, 19.803471235131294, 15.178586109409999, 14.061350791855755], "cpc": [0.3767708254137206, 0.3665015967047716, 0.3675260834670947, 0.3541869522882181, 0.38102726634892214, 0.43088552915766737, 0.42737474821754007, 0.42866441311852704, 0.41272625312742645], "ctr": [0.7906733447462222, 0.8695514527871833, 0.8259718198987008, 0.8461538461538461, 0.8570405446343058, 0.6960584095234471, 0.7127242830087598, 0.6123861080317098, 0.7108318816061084], "tick": [144.78535211267607, 167.9970014992504, 155.25968109339408, 148.77070063694268, 132.95831465710444, 159.91947194719472, 191.96011602610588, 182.76090909090908, 149.92920505200593]}, "seller": {"inv": [24588, 14610, 14989, 7925, 7601, 10263, 10553, 9127, 9565], "ven": [150001, 181222, 179499, 111742, 115984, 155153, 186795, 108944, 68115], "ped": [452, 650, 676, 400, 388, 528, 686, 371, 250], "clk": [28081, 28526, 31692, 18354, 16485, 21958, 22617, 19388, 20046], "imp": [3900388, 3353180, 3855688, 2159241, 1814324, 2684128, 2746443, 2118925, 2329775], "acos": [16.39189072072853, 8.061935085144189, 8.350464347990796, 7.092230316264252, 6.553490136570561, 6.6147609134209455, 5.649508819829225, 8.377794367384771, 14.042081776724142], "roas": [6.1005775174882055, 12.403969883641341, 11.975381946760958, 14.09993690851735, 15.25904486251809, 15.117704374939102, 17.70065384250924, 11.936315886351386, 7.121451191500529], "cpc": [0.8756098429543108, 0.5121643413026713, 0.4729584753250032, 0.4317859867058952, 0.4610858356081286, 0.4673922943801803, 0.46659592342043593, 0.4707592325149577, 0.4771440686421231], "ctr": [0.719954014831345, 0.8507148438198964, 0.8219544734947434, 0.8500209101253635, 0.908602873577156, 0.8180682888446452, 0.8235015254276168, 0.9149922720247295, 0.8604264360292303], "tick": [331.8606194690266, 278.8030769230769, 265.5310650887574, 279.355, 298.92783505154637, 293.8503787878788, 272.2959183673469, 293.64881401617254, 272.46188]}, "glob": {"inv": [54322, 38367, 36970, 23930, 23350, 23031, 23920, 21047, 23917], "ven": [406995, 405330, 452135, 368669, 412614, 397431, 451508, 289877, 269920], "ped": [2227, 1984, 2432, 2127, 2619, 2043, 2065, 1361, 1596], "clk": [106999, 93347, 91500, 63542, 57818, 51590, 53894, 47196, 54819], "imp": [13881501, 10807713, 11096613, 7499641, 6637083, 6941242, 7134816, 6659851, 7221649], "acos": [13.347092716126733, 9.46562060543261, 8.17676136552136, 6.490917326924694, 5.659042107150993, 5.794968183156321, 5.297802032300646, 7.260796570241978, 8.860604642453929], "roas": [7.492268325908472, 10.564547658143717, 12.229780903435218, 15.406142916840786, 17.67083511777302, 17.256350136772177, 18.875752508361202, 13.772593548460666, 11.285911519047891], "cpc": [0.5076869877288572, 0.4110148156877029, 0.40404371584699456, 0.3766013030751314, 0.40385347123733095, 0.44642372552820314, 0.44383419304560806, 0.44595686075091107, 0.4362823108776154], "ctr": [0.7708028115979677, 0.8637072431512569, 0.8245759314125851, 0.8472672225243848, 0.8711357082621989, 0.7432387460342111, 0.7553663612348237, 0.7086645031548003, 0.7590925562845826], "tick": [182.75482712168838, 204.29939516129033, 185.91077302631578, 173.32816173013634, 157.5463917525773, 194.53303964757708, 218.64794188861987, 212.98825128581925, 169.12291979949873]}, "cat": {"Frío": {"v_inv": [9900.45, 7493.04, 6787.93, 4999.44, 4000.69, 3900.48, 5084.88, 3453.89, 4139.3], "v_ven": [79500.53, 57802.15, 72862.84, 51933.54, 53355.84, 48296.33, 94853.07, 45456.15, 60211.49], "s_inv": [3998.56, 3677.54, 3336.83, 1773.57, 2600.96, 4299.99, 4677.0, 4768.21, 5247.48], "s_ven": [51013.0, 38533.99, 35721.0, 19681.8, 36047.95, 64831.91, 77721.0, 55409.0, 39089.0], "c": "#3b82c4"}, "Lavado": {"v_inv": [4768.95, 4871.03, 4730.01, 3630.08, 3228.38, 2672.58, 2450.0, 1900.2, 2251.25], "v_ven": [48025.12, 72422.02, 72029.05, 53336.31, 50125.51, 46529.99, 53878.27, 45114.1, 31263.59], "s_inv": [8894.66, 8491.65, 7952.71, 4001.59, 3999.49, 4303.28, 4375.49, 2810.36, 2367.46], "s_ven": [87817.99, 117660.0, 110781.0, 65060.13, 60804.5, 69309.3, 75520.0, 38480.0, 17374.99], "c": "#2fa37a"}, "Cocción": {"v_inv": [9274.47, 6142.5, 6418.2, 4375.99, 4200.9, 3066.77, 2291.26, 2864.4, 3459.78], "v_ven": [76412.71, 47467.26, 71442.54, 60535.54, 75601.17, 54713.74, 42452.73, 34111.55, 37166.56], "s_inv": [769.49, 2441.2, 3699.49, 2149.36, 1000.06, 1659.19, 1500.65, 1548.51, 1949.89], "s_ven": [8949.9, 25027.93, 32997.0, 26999.98, 19132.0, 24689.68, 33553.99, 15054.71, 11651.48], "c": "#FF9900"}, "Marca y otros": {"v_inv": [5789.78, 5250.65, 4045.28, 2999.97, 4319.51, 2840.76, 3499.48, 3701.81, 4501.4], "v_ven": [53055.61, 46416.13, 56301.2, 91121.97, 117547.97, 92318.3, 73528.98, 56251.5, 73163.07], "s_inv": [0, 0, 0, 0, 0, 0, 0, 0, 0], "s_ven": [0, 0, 0, 0, 0, 0, 0, 0, 0], "c": "#8b6bb1"}, "Confort": {"v_inv": [0, 0, 0, 0, 0, 287.79, 41.8, 0, 0], "v_ven": [0, 0, 0, 0, 0, 419.84, 0, 0, 0], "s_inv": [0, 0, 0, 0, 0, 0, 0, 0, 0], "s_ven": [0, 0, 0, 0, 0, 0, 0, 0, 0], "c": "#c9a227"}, "Deshumidif.": {"v_inv": [0, 0, 0, 0, 0, 0, 0, 0, 0], "v_ven": [0, 0, 0, 0, 0, 0, 0, 0, 0], "s_inv": [10895.07, 0, 0, 0, 0, 0, 0, 0, 0], "s_ven": [2220.0, 0, 0, 0, 0, 0, 0, 0, 0], "c": "#9aa0a6"}}, "neg": {"v_ingresos": [409387, 301627, 530970, 423559, 571577, 563584, 580023, 430970.45, 455018.44], "v_cogs": [329890, 242557, 441566, 348167, 470040, 451804, 460712, 340563.79, 354077.95], "v_uds": [3103, 1892, 3560, 3276, 4598, 4049, 3682, 2722, 3111], "v_ses": [328129, 185372, 277014, 219628, 248669, 238904, 324409, 210370, 216661], "v_conv": [0.95, 1.02, 1.29, 1.49, 1.85, 1.69, 1.14, 1.29, 1.44], "v_sellin": [211017, 285318, 446577, 525182, 492105, 338677.8, 443769.72, 311652.75, 451338.45], "s_ventas": [554226, 495156, 482083, 416674, 453212, 609271.61, 692806.6, 441061.51, 304689.07], "s_margen": [387958, 346609, 337458, 291672, 317249, 426490, 484965, 308743.06, 213282.35], "fact": [598975, 631927, 784035, 816854, 809354, 765168, 928734, 620396, 664621], "total": [963613, 796783, 1013053, 840234, 1024789, 1172856, 1272830, 872031.96, 759707.51], "objetivo": [660959, 765675, 832949, 839513, 861977, 880959, 854902, 894803, 890584]}, "objAnual": 10148761, "sov": {"Frío": {"marcas": 137, "nuestro": 15.9831, "org": 18.5014, "pag": 12.1066, "refs": 28, "presencia": 65.33, "puesto": 1, "comp": [["Corberó", 15.9831, 3.27], ["Hisense", 12.0944, 2.37], ["Midea", 11.0904, -1.17], ["Candy", 10.1263, -1.03], ["Cecotec", 9.9741, 0.16], ["Comfee", 8.9237, 0.79], ["NILSON", 8.0011, 0.86], ["Haier", 3.3061, -0.26]], "serie": {"sos": [13.6525, 12.7136, 15.9831], "org": [19.5616, 15.6239, 18.5014], "pag": [4.0388, 7.6721, 12.1066], "freq": [45.28, 49.92, 65.33]}, "acos": {"v": [7.6, 6.87], "s": [8.61, 13.42]}, "puestoAgo": 1}, "Lavado": {"marcas": 449, "nuestro": 5.5549, "org": 5.5135, "pag": 5.6202, "refs": 23, "presencia": 62.93, "puesto": 7, "comp": [["Cecotec", 13.8048, 2.17], ["Hisense", 10.0885, -0.37], ["Finish", 8.3854, -2.06], ["Comfee", 7.6963, 0.36], ["Balay", 7.0298, -1.91], ["Candy", 6.5131, 1.74], ["Corberó", 5.5549, -2.27], ["Bosch", 5.5168, 1.03]], "serie": {"sos": [7.4129, 7.8247, 5.5549], "org": [8.6835, 8.4944, 5.5135], "pag": [5.3455, 6.6154, 5.6202], "freq": [70.52, 73.94, 62.93]}, "acos": {"v": [4.21, 7.2], "s": [7.3, 13.63]}, "puestoAgo": 5}, "Cocción": {"marcas": 422, "nuestro": 4.6165, "org": 5.4132, "pag": 3.5756, "refs": 41, "presencia": 42.82, "puesto": 5, "comp": [["Cecotec", 29.5771, -0.63], ["Candy", 11.7034, 0.26], ["Comfee", 7.7773, 0.92], ["Midea", 5.7606, 1.88], ["Corberó", 4.6165, 0.9], ["Orbegozo", 3.5966, -0.97], ["LG", 3.5463, -0.39], ["Balay", 3.4275, -0.54]], "serie": {"sos": [3.7322, 3.7146, 4.6165], "org": [6.0062, 4.7689, 5.4132], "pag": [0.529, 2.0894, 3.5756], "freq": [31.46, 38.03, 42.82]}, "acos": {"v": [8.4, 9.31], "s": [10.29, 16.74]}, "puestoAgo": 10}}, "sovkw": [["Cocción", "cocina de gas butano con horno", 22.5228, 32.0237, "Posición natural fuerte", -4.32], ["Cocción", "cocina de gas con horno", 21.222, 30.7131, "Posición natural fuerte", -6.56], ["Frío", "frigorífico", 19.6518, 20.1096, "Posición natural fuerte", 5.64], ["Cocción", "cocinas de gas", 14.6991, 21.4071, "Posición natural fuerte", -4.77], ["Frío", "nevera", 13.4072, 16.8731, "Posición natural fuerte", 0.9], ["Cocción", "vitrocerámica", 12.2106, 14.0346, "Posición natural fuerte", 0.83], ["Cocción", "horno de gas", 12.0576, 15.1727, "Posición natural fuerte", -5.35], ["Cocción", "encimera gas y horno", 11.8165, 14.8797, "Posición natural fuerte", -1.53], ["Cocción", "cocina vitrocerámica", 11.625, 10.9839, "Mitad natural, mitad pagada", -1.2], ["Lavado", "lavadora secadora", 9.1193, 9.2214, "Buena posición", -2.54], ["Lavado", "secadora", 5.8961, 7.7403, "Posición media", -2.25], ["Lavado", "lavavajillas", 5.1239, 3.7476, "Posición media", -1.94], ["Lavado", "lavadora", 4.9119, 7.6639, "Posición baja", -3.46], ["Cocción", "microondas", 4.1573, 4.2935, "Posición baja", 2.08], ["Cocción", "horno", 2.5543, 3.738, "Posición baja", -0.95]], "yoy": {"inv": [11141, 8907, 10500, 12415, 12119, 12230, 14489, 17807.61, 17270.49], "ven": [79904, 84465, 127300, 159371, 159105, 145316, 188898, 170215.47, 229250.12], "ped": [743, 737, 920, 1229, 1003, 936, 1070, 1085, 1797], "imp": [11141, 4459831, 5166569, 4474198, 4259743, 3925106, 5168008, 6310804, 6559425], "clk": [33058, 25299, 31434, 33743, 31294, 30112, 39190, 51913, 52339]}, "prov": {"mes": "septiembre"}, "sovm": {"Frío": {"tot": [15.076, 14.108, 12.904, 14.077, 13.489, 12.648, 13.652, 12.714, 15.983], "org": [16.16, 13.474, 17.17, 21.166, 20.556, 18.269, 19.562, 15.624, 18.501], "pag": [13.528, 15.067, 6.414, 3.575, 3.61, 3.545, 4.039, 7.672, 12.107], "sp": [17.785, 19.954, 8.676, 4.825, 5.024, 5.283, 6.036, 11.667, 17.594], "sb": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, "Lavado": {"tot": [8.809, 10.87, 10.166, 10.439, 10.743, 8.045, 7.413, 7.825, 5.555], "org": [6.742, 8.202, 7.651, 8.638, 9.672, 8.439, 8.683, 8.494, 5.514], "pag": [12.171, 15.234, 14.334, 13.31, 12.288, 7.416, 5.346, 6.615, 5.62], "sp": [9.357, 9.842, 9.2, 9.946, 6.793, 2.636, 2.829, 5.564, 5.322], "sb": [20.636, 30.746, 27.735, 22.269, 25.865, 17.317, 10.475, 8.515, 6.248]}, "Cocción": {"tot": [5.41, 4.992, 5.047, 6.134, 7.438, 5.265, 3.732, 3.715, 4.617], "org": [6.69, 4.329, 5.951, 6.779, 7.869, 6.794, 6.006, 4.769, 5.413], "pag": [3.732, 5.828, 3.945, 5.335, 6.953, 3.113, 0.529, 2.089, 3.576], "sp": [4.179, 6.745, 4.661, 6.551, 8.886, 4.089, 0.494, 2.616, 4.589], "sb": [1.929, 2.426, 1.482, 1.208, 1.121, 0.831, 0.613, 0.946, 0.984]}}};
+const M = D.M, N = M.length, j = N-1;
+const FULL=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+const CAP = s => s.charAt(0).toUpperCase()+s.slice(1);
+const num = v => String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+const co  = t => String(t).replace('.',',');
+const eur = v => '€'+num(v);
+const eu0 = v => num(v)+' €';
+const eum = v => Math.abs(v)>=1e6 ? co((v/1e6).toFixed(2))+' M€' : num(v/1e3)+' k€';
+const pc  = v => co(v.toFixed(1))+'%';
+const sg  = (x,d=0) => (x>=0?'+':'−')+co(Math.abs(x).toFixed(d));
+const sum = a => a.reduce((x,z)=>x+(z||0),0);
+const kfmt = v => v>=1000?Math.round(v/1000)+'k':String(Math.round(v));
+const ta = h => ` data-tip="${String(h).replace(/"/g,'&quot;')}"`;     // texto que sale al pasar el ratón
+let CAR='glob';
+
+function delta(now, prev, inverse, lab){
+  if(now==null||prev==null||!isFinite(prev)||prev===0) return null;
+  const d = (now-prev)/Math.abs(prev)*100;
+  const good = inverse ? d<0 : d>0;
+  const cls = Math.abs(d)<0.05 ? 'fl' : (good?'up':'dn');
+  return [cls, (d>=0?'▲ ':'▼ ')+co(Math.abs(d).toFixed(1))+'% '+(lab===undefined?'MoM':lab)];
+}
+function axis(W,H,max,ticks=4,fmt){
+  let s='';
+  for(let i=0;i<=ticks;i++){
+    const y=H-(H*i/ticks), v=max*i/ticks;
+    s+=`<line x1="0" y1="${y}" x2="${W}" y2="${y}" stroke="#eee"/>`;
+    s+=`<text x="-8" y="${y+4}" font-size="10" fill="#8a8a85" text-anchor="end">${fmt?fmt(v):(v>=1000?Math.round(v/1000)+'k':co(v.toFixed(v<10?1:0)))}</text>`;
+  }
+  return s;
+}
+function mesesX(iw,ih){ return M.map((m,i)=>`<text x="${iw/N*i+iw/N/2}" y="${ih+17}" font-size="11" fill="#6b6b65" text-anchor="middle">${m}</text>`).join(''); }
+// punto de una línea con una zona de ratón más grande
+function punto(x,y,c,tip,r=3.3){ return `<circle cx="${x}" cy="${y}" r="${r}" fill="${c}"/><circle cx="${x}" cy="${y}" r="10" fill="transparent"${ta(tip)}/>`; }
+// barras apiladas por canal con una línea (el objetivo) y puntos (sell-out) a la misma escala; arriba de cada mes, el objetivo en k y el % logrado
+function stackLine(el, parts, line, opt={}){
+  const W=opt.W||760,H=opt.H||250,pad={l:44,r:14,t:(line.some(v=>v!=null)?34:12),b:26};
+  const iw=W-pad.l-pad.r, ih=H-pad.t-pad.b;
+  const tot=M.map((_,i)=>parts.every(p=>p.v[i]==null)?null:parts.reduce((a,p)=>a+(p.v[i]||0),0));
+  const dots=opt.dots||M.map(()=>null);
+  const max=Math.max(...tot.filter(v=>v!=null),...line.filter(v=>v!=null),...dots.filter(v=>v!=null),1)*1.1, bw=iw/N*0.55;
+  let s=`<svg viewBox="0 0 ${W} ${H}"><g transform="translate(${pad.l},${pad.t})">`+axis(iw,ih,max);
+  M.forEach((_,i)=>{
+    const x=iw/N*i+iw/N/2-bw/2;
+    if(tot[i]==null){ s+=`<rect x="${x}" y="${ih-14}" width="${bw}" height="14" fill="#f0e2c6"/><text x="${x+bw/2}" y="${ih-19}" font-size="9" fill="#a98b46" text-anchor="middle">—</text>`; return; }
+    let acc=0;
+    parts.forEach(p=>{const v=p.v[i]||0; if(!v) return; const h=ih*v/max; s+=`<rect x="${x}" y="${ih-acc-h}" width="${bw}" height="${h}" fill="${p.c}"${ta('<b>'+M[i]+' · '+p.n+'</b><br>'+eu0(v)+(parts.length>1?'<br>Total del mes: '+eu0(tot[i]):''))}/>`; acc+=h;});
+    if(line[i]!=null){ const pct=100*tot[i]/line[i];
+      s+=`<text x="${x+bw/2}" y="-20" font-size="10" font-weight="600" fill="#FF9900" text-anchor="middle">obj ${kfmt(line[i])}</text><text x="${x+bw/2}" y="-7" font-size="11" font-weight="700" fill="${pct>=100?'#1a8a5a':'#c0392b'}" text-anchor="middle">${co(pct.toFixed(0))}%</text>`; }
+  });
+  const pts=line.map((v,i)=>v==null?null:[iw/N*i+iw/N/2, ih-ih*v/max, i]).filter(Boolean);
+  if(pts.length>1) s+=`<polyline fill="none" stroke="#FF9900" stroke-width="2.4" points="${pts.map(p=>p[0]+','+p[1]).join(' ')}"/>`;
+  pts.forEach(p=>{ s+=punto(p[0],p[1],'#FF9900','<b>Objetivo de '+FULL[p[2]]+'</b><br>'+eu0(line[p[2]])+'<br>Facturación: '+(tot[p[2]]==null?'—':eu0(tot[p[2]])+' ('+co((100*tot[p[2]]/line[p[2]]).toFixed(1))+'%)'),3.4); });
+  dots.forEach((v,i)=>{ if(v==null) return; const x=iw/N*i+iw/N/2, y=ih-ih*v/max;
+    s+=`<path d="M${x},${y-5} L${x+5},${y} L${x},${y+5} L${x-5},${y} Z" fill="#1A1A1A"/><path d="M${x},${y-10} L${x+10},${y} L${x},${y+10} L${x-10},${y} Z" fill="transparent"${ta('<b>Sell-out de '+FULL[i]+'</b><br>'+eu0(v)+(line[i]!=null?'<br>'+co((100*v/line[i]).toFixed(1))+'% del objetivo':''))}/>`; });
+  const lg=`<div class="lgd">`+parts.map(p=>`<span><i style="background:${p.c}"></i>${p.n}</span>`).join('')+(line.some(v=>v!=null)?`<span><i style="background:#FF9900"></i>Objetivo del mes</span>`:'')+(dots.some(v=>v!=null)?`<span><i style="background:#1A1A1A;transform:rotate(45deg)"></i>Sell-out (Vendor a coste + Seller sin IVA)</span>`:'')+`</div>`;
+  document.getElementById(el).innerHTML=s+mesesX(iw,ih)+'</g></svg>'+lg;
+}
+function lines(el, series, opt={}){
+  const W=opt.W||760,H=opt.H||190,pad={l:44,r:opt.lab?30:14,t:10,b:26};
+  const iw=W-pad.l-pad.r, ih=H-pad.t-pad.b;
+  const all=series.flatMap(s=>s.v).filter(v=>v!=null);
+  const max=Math.max(...all,opt.ref||0)*1.15;
+  let s=`<svg viewBox="0 0 ${W} ${H}"><g transform="translate(${pad.l},${pad.t})">`+axis(iw,ih,max,4,opt.axf);
+  if(opt.ref){const y=ih-ih*opt.ref/max;
+    s+=`<line x1="0" y1="${y}" x2="${iw}" y2="${y}" stroke="#c0392b" stroke-width="1.5" stroke-dasharray="5 4"/>`;}
+  series.forEach(se=>{
+    const f=se.f||pc, pts=se.v.map((v,i)=>v==null?null:[iw/N*i+iw/N/2, ih-ih*v/max, i]).filter(Boolean);
+    if(pts.length>1) s+=`<polyline fill="none" stroke="${se.c}" stroke-width="${se.w||2.4}"${se.dash?' stroke-dasharray="5 4"':''} points="${pts.map(p=>p[0]+','+p[1]).join(' ')}"/>`;
+    pts.forEach(p=>{ s+=punto(p[0],p[1],se.c,'<b>'+M[p[2]]+(se.n?' · '+se.n:'')+'</b><br>'+f(se.v[p[2]])+(se.tip?se.tip(p[2]):'')); });
+    if(se.lab && pts.length){ const p=pts[pts.length-1]; s+=`<text x="${p[0]+7}" y="${p[1]+4+(se.dy||0)}" font-size="10" font-weight="700" fill="${se.c}">${f(se.v[p[2]])}</text>`; }
+  });
+  document.getElementById(el).innerHTML=s+mesesX(iw,ih)+'</g></svg>';
+}
+function stacked(el, parts, opt={}){
+  const W=opt.W||760,H=opt.H||200,pad={l:44,r:14,t:10,b:26};
+  const iw=W-pad.l-pad.r, ih=H-pad.t-pad.b;
+  const tot=M.map((_,i)=>parts.reduce((a,p)=>a+(p.v[i]||0),0));
+  const max=Math.max(...tot,1)*1.12, bw=iw/N*0.55;
+  let s=`<svg viewBox="0 0 ${W} ${H}"><g transform="translate(${pad.l},${pad.t})">`+axis(iw,ih,max);
+  M.forEach((_,i)=>{
+    let acc=0; const x=iw/N*i+iw/N/2-bw/2;
+    parts.forEach(p=>{const v=p.v[i]||0; if(!v) return; const h=ih*v/max;
+      s+=`<rect x="${x}" y="${ih-acc-h}" width="${bw}" height="${h}" fill="${p.c}"${ta('<b>'+M[i]+' · '+p.n+'</b><br>'+eu0(v)+' ('+co((100*v/tot[i]).toFixed(1))+'% del total)<br>Total: '+eu0(tot[i]))}/>`; acc+=h;});
+  });
+  let lg=`<div class="lgd">`+parts.map(p=>`<span><i style="background:${p.c}"></i>${p.n}</span>`).join('')+`</div>`;
+  document.getElementById(el).innerHTML=s+mesesX(iw,ih)+'</g></svg>'+lg;
+}
+// Dos columnas por mes: ventas por publicidad (izquierda) e inversión publicitaria (derecha), con el importe encima.
+// Modo normal: la MISMA escala para las dos y una línea con el ACOS del mes (eje derecho, en %), con la línea roja del 15 %.
+// Modo «dual» (categorías): la inversión tiene su propio eje a la derecha para que se lea, y no se dibuja el ACOS (va en su propio gráfico).
+function pares(el, L, R, opt={}){
+  const W=opt.W||760,H=opt.H||300,pad={l:46,r:46,t:22,b:26}, dual=!!opt.dual;
+  const iw=W-pad.l-pad.r, ih=H-pad.t-pad.b;
+  const tL=M.map((_,i)=>L.reduce((a,p)=>a+(p.v[i]||0),0)), tR=M.map((_,i)=>R.reduce((a,p)=>a+(p.v[i]||0),0));
+  const maxL=Math.max(...tL,...(dual?[]:tR),1)*1.12, maxR=dual?Math.max(...tR,1)*1.12:maxL;
+  const ac=M.map((_,i)=>tL[i]>0?100*tR[i]/tL[i]:null);
+  const amax=Math.max(15,...ac.filter(v=>v!=null))*1.3;
+  const slot=iw/N, bw=slot*0.3, gap=3;
+  let s=`<svg viewBox="0 0 ${W} ${H}"><g transform="translate(${pad.l},${pad.t})">`+axis(iw,ih,maxL);
+  for(let i=0;i<=4;i++){ const y=ih-ih*i/4; if(dual){ const v=maxR*i/4; s+=`<text x="${iw+8}" y="${y+4}" font-size="10" font-weight="600" fill="#FF9900">${kfmt(v)}</text>`; } else { const v=amax*i/4; s+=`<text x="${iw+8}" y="${y+4}" font-size="10" fill="#3F3F3F">${co(v.toFixed(v<10?1:0))}%</text>`; } }
+  if(!dual){ const y15=ih-ih*15/amax; s+=`<line x1="0" y1="${y15}" x2="${iw}" y2="${y15}" stroke="#c0392b" stroke-width="1.4" stroke-dasharray="5 4"/>`; }
+  M.forEach((_,i)=>{
+    const xL=slot*i+slot/2-bw-gap/2, xR=slot*i+slot/2+gap/2; let a=0, b=0;
+    L.forEach(p=>{const v=p.v[i]||0; if(!v) return; const h=ih*v/maxL; s+=`<rect x="${xL}" y="${ih-a-h}" width="${bw}" height="${h}" fill="${p.c}"${ta('<b>'+M[i]+' · '+p.n+'</b><br>'+eu0(v)+(L.length>1?' ('+co((100*v/tL[i]).toFixed(1))+'% del total)<br>Total ventas por publicidad: '+eu0(tL[i]):''))}/>`; a+=h;});
+    R.forEach(p=>{const v=p.v[i]||0; if(!v) return; const h=ih*v/maxR; s+=`<rect x="${xR}" y="${ih-b-h}" width="${bw}" height="${h}" fill="${p.c}" fill-opacity="${opt.op||0.55}" stroke="${p.c}" stroke-width="1"${ta('<b>'+M[i]+' · '+p.n+'</b><br>'+eu0(v)+(R.length>1?' ('+co((100*v/tR[i]).toFixed(1))+'% del total)<br>Total inversión publicitaria: '+eu0(tR[i]):''))}/>`; b+=h;});
+    if(tL[i]>0){ s+=`<text x="${xL+bw/2}" y="${ih-ih*tL[i]/maxL-4}" font-size="9" fill="#3F3F3F" text-anchor="middle">${kfmt(tL[i])}</text><text x="${xR+bw/2}" y="${ih-ih*tR[i]/maxR-4}" font-size="9" font-weight="600" fill="#FF9900" text-anchor="middle">${kfmt(tR[i])}</text>`; }
+  });
+  if(!dual){
+    const pts=ac.map((v,i)=>v==null?null:[slot*i+slot/2, ih-ih*v/amax, i]).filter(Boolean);
+    if(pts.length>1) s+=`<polyline fill="none" stroke="#1A1A1A" stroke-width="2.2" points="${pts.map(p=>p[0]+','+p[1]).join(' ')}"/>`;
+    pts.forEach(p=>{ s+=`<circle cx="${p[0]}" cy="${p[1]}" r="3.6" fill="#fff" stroke="#1A1A1A" stroke-width="2"/><text x="${p[0]}" y="${p[1]-8}" font-size="10" font-weight="700" fill="#1A1A1A" text-anchor="middle" stroke="#fff" stroke-width="3" paint-order="stroke">${co(ac[p[2]].toFixed(1))}%</text>`
+      +`<circle cx="${p[0]}" cy="${p[1]}" r="10" fill="transparent"${ta('<b>'+M[p[2]]+' · ACOS</b><br>'+pc(ac[p[2]])+'<br>Inversión '+eu0(tR[p[2]])+' ÷ ventas '+eu0(tL[p[2]]))}/>`; });
+  }
+  const lg=`<div class="lgd">`+L.map(p=>`<span><i style="background:${p.c}"></i>${p.n}</span>`).join('')+(opt.legR?R.map(p=>`<span><i style="background:${p.c}"></i>${p.n}</span>`).join(''):'')
+    +(dual?'':`<span><i style="background:#fff;border:2px solid #1A1A1A;border-radius:50%"></i>ACOS del mes (eje derecho)</span><span><i style="background:#c0392b"></i>objetivo 15%</span>`)
+    +`<span style="color:#8a8a85">${dual?'Columna izquierda: ventas por publicidad (eje izquierdo) · columna derecha, más clara: inversión publicitaria (eje derecho, con su propia escala)':'Columna izquierda: ventas por publicidad · columna derecha'+((opt.op||0.55)<0.7?', más clara,':'')+': inversión publicitaria · las dos con la misma escala (eje izquierdo)'}</span></div>`;
+  document.getElementById(el).innerHTML=s+mesesX(iw,ih)+'</g></svg>'+lg;
+}
+// Dos columnas por mes: el año anterior (gris) y este año (naranja Roicos), con la misma escala.
+// opt: f (dato en el globo), lab (etiqueta sobre la columna), axf (eje), max, ref (línea roja, p. ej. el 15 % de ACOS), bwf (grosor), dvf (variación en el globo), tx (texto extra en el globo)
+function dobles(el, A, B, opt={}){
+  const W=opt.W||760,H=opt.H||250,pad={l:46,r:14,t:20,b:26};
+  const iw=W-pad.l-pad.r, ih=H-pad.t-pad.b, slot=iw/N, bw=slot*(opt.bwf||0.3), gap=3, f=opt.f||eu0, lab=opt.lab||kfmt;
+  const max=opt.max||Math.max(...A.v.filter(v=>v!=null),...B.v.filter(v=>v!=null),1)*1.12;
+  let s=`<svg viewBox="0 0 ${W} ${H}"><g transform="translate(${pad.l},${pad.t})">`+axis(iw,ih,max,4,opt.axf);
+  if(opt.ref){ const y=ih-ih*opt.ref/max; s+=`<line x1="0" y1="${y}" x2="${iw}" y2="${y}" stroke="#c0392b" stroke-width="1.4" stroke-dasharray="5 4"/>`; }
+  const halo=' stroke="#fff" stroke-width="3" paint-order="stroke"';
+  M.forEach((_,i)=>{
+    const xB=slot*i+slot/2-bw-gap/2, xA=slot*i+slot/2+gap/2, vb=B.v[i], va=A.v[i];
+    const dv=(vb!=null&&va!=null)?(opt.dvf?opt.dvf(va,vb,B.n):(vb>0?' ('+sg(100*(va/vb-1),1)+'% frente a '+B.n+')':'')):'';
+    if(vb!=null){ const h=ih*vb/max; s+=`<rect x="${xB}" y="${ih-h}" width="${bw}" height="${h}" rx="2" fill="${B.c}"${ta('<b>'+M[i]+' '+B.n+'</b><br>'+f(vb)+(opt.tx?opt.tx(i,B):''))}/><text x="${xB+bw/2}" y="${ih-h-4}" font-size="9" fill="#6b6b65" text-anchor="middle"${halo}>${lab(vb)}</text>`; }
+    if(va!=null){ const h=ih*va/max; s+=`<rect x="${xA}" y="${ih-h}" width="${bw}" height="${h}" rx="2" fill="${A.c}"${ta('<b>'+M[i]+' '+A.n+'</b><br>'+f(va)+dv+(opt.tx?opt.tx(i,A):''))}/><text x="${xA+bw/2}" y="${ih-h-4}" font-size="9" font-weight="600" fill="#FF9900" text-anchor="middle"${halo}>${lab(va)}</text>`; }
+  });
+  const lg=`<div class="lgd"><span><i style="background:${B.c}"></i>${B.n}</span><span><i style="background:${A.c}"></i>${A.n}</span>`+(opt.ref?`<span><i style="background:#c0392b"></i>objetivo ${opt.ref}%</span>`:'')+`<span style="color:#8a8a85">las dos columnas con la misma escala</span></div>`;
+  document.getElementById(el).innerHTML=s+mesesX(iw,ih)+'</g></svg>'+lg;
+}
+// Peso de la publicidad en las ventas, en euros reales: cada barra es la venta total al consumidor del mes; en naranja, la parte que llega por publicidad, con su % dentro
+function pesoReal(el, ads, tot){
+  const W=760,H=270,pad={l:44,r:14,t:24,b:26};
+  const iw=W-pad.l-pad.r, ih=H-pad.t-pad.b, slot=iw/N, bw=slot*0.56;
+  const max=Math.max(...tot.filter(v=>v!=null),1)*1.12;
+  let s=`<svg viewBox="0 0 ${W} ${H}"><g transform="translate(${pad.l},${pad.t})">`+axis(iw,ih,max);
+  M.forEach((_,i)=>{
+    const x=slot*i+slot/2-bw/2;
+    if(tot[i]==null){ s+=`<rect x="${x}" y="${ih-14}" width="${bw}" height="14" fill="#f0e2c6"/><text x="${x+bw/2}" y="${ih-19}" font-size="9" fill="#a98b46" text-anchor="middle">—</text>`; return; }
+    const a=Math.min(ads[i],tot[i]), pct=100*a/tot[i], hT=ih*tot[i]/max, hA=ih*a/max;
+    s+=`<rect x="${x}" y="${ih-hT}" width="${bw}" height="${hT-hA}" fill="#CCCCCC"${ta('<b>'+M[i]+' · resto de ventas (sin publicidad)</b><br>'+eu0(tot[i]-a)+' ('+co((100-pct).toFixed(1))+'%)<br>Venta total al consumidor: '+eu0(tot[i]))}/><rect x="${x}" y="${ih-hA}" width="${bw}" height="${hA}" fill="#FF9900"${ta('<b>'+M[i]+' · ventas por publicidad</b><br>'+eu0(a)+' ('+co(pct.toFixed(1))+'% de la venta)<br>Venta total al consumidor: '+eu0(tot[i]))}/>`;
+    const dentro = hA>=18;
+    s+=`<text x="${x+bw/2}" y="${dentro?ih-hA+15:ih-hA-4}" font-size="11" font-weight="700" fill="${dentro?'#fff':'#3F3F3F'}" text-anchor="middle" pointer-events="none">${co(pct.toFixed(1))}%</text>`;
+    s+=`<text x="${x+bw/2}" y="${ih-hT-6}" font-size="10" fill="#6b6b65" text-anchor="middle">${kfmt(tot[i])} €</text>`;
+  });
+  const lg=`<div class="lgd"><span><i style="background:#FF9900"></i>Ventas por publicidad (con su % sobre la venta total)</span><span><i style="background:#CCCCCC"></i>Resto de ventas (sin publicidad)</span><span style="color:#8a8a85">encima de cada barra, la venta total al consumidor del mes</span></div>`;
+  document.getElementById(el).innerHTML=s+mesesX(iw,ih)+'</g></svg>'+lg;
+}
+function donut(el, items){
+  const tot=items.reduce((a,x)=>a+x.v,0)||1;
+  const R=74,r=44,cx=95,cy=95; let a0=-Math.PI/2, s=`<svg viewBox="0 0 420 190">`;
+  items.forEach(it=>{
+    const a1=a0+2*Math.PI*it.v/tot;
+    const p=(rad,a)=>[cx+rad*Math.cos(a),cy+rad*Math.sin(a)];
+    const big=(a1-a0)>Math.PI?1:0;
+    const [x1,y1]=p(R,a0),[x2,y2]=p(R,a1),[x3,y3]=p(r,a1),[x4,y4]=p(r,a0);
+    s+=`<path d="M${x1},${y1} A${R},${R} 0 ${big} 1 ${x2},${y2} L${x3},${y3} A${r},${r} 0 ${big} 0 ${x4},${y4} Z" fill="${it.c}"${ta('<b>'+it.n+'</b><br>'+eu0(it.v)+' ('+co((100*it.v/tot).toFixed(1))+'%)')}/>`;
+    a0=a1;
+  });
+  s+=`<text x="${cx}" y="${cy-12}" font-size="11" fill="#6b6b65" text-anchor="middle">Ventas por</text>`;
+  s+=`<text x="${cx}" y="${cy}" font-size="11" fill="#6b6b65" text-anchor="middle">publicidad</text>`;
+  s+=`<text x="${cx}" y="${cy+19}" font-size="15" font-weight="700" fill="#1A1A1A" text-anchor="middle">${eur(tot)}</text>`;
+  let y=28;
+  items.forEach(it=>{ s+=`<rect x="215" y="${y-9}" width="11" height="11" rx="3" fill="${it.c}"/>`
+    +`<text x="233" y="${y}" font-size="12" fill="#3F3F3F">${it.n}</text>`
+    +`<text x="415" y="${y}" font-size="12" font-weight="600" fill="#1A1A1A" text-anchor="end">${eur(it.v)} · ${co((100*it.v/tot).toFixed(1))}%</text>`; y+=24;});
+  document.getElementById(el).innerHTML=s+'</svg>';
+}
+function hbars(el, items, fmt){
+  const max=Math.max(...items.map(i=>i.v),1);
+  document.getElementById(el).innerHTML=items.map(i=>
+    `<div style="margin:9px 0"><div style="display:flex;justify-content:space-between;font-size:12.5px">
+     <span>${i.n}</span><b>${fmt(i.v)}</b></div>
+     <div class="prog"><i style="width:${100*i.v/max}%;background:${i.c}"></i></div></div>`).join('');
+}
+function tile(t,v,ds,s,tipv){ return `<div class="k"><div class="t">${t}</div><div class="v"${tipv?ta(tipv):''}>${v}</div>${(ds||[]).filter(Boolean).map(d=>`<div class="d ${d[0]}">${d[1]}</div>`).join('')}${s?`<div class="d fl">${s}</div>`:''}</div>`; }
+function tilePend(t){ return `<div class="k pend"><div class="t">${t}</div><div class="v">—</div><div class="d fl">dato del mes aún no cerrado</div></div>`; }
+function vistaNombre(){ return CAR==='vendor'?'Vendor · Corberó':(CAR==='seller'?'Seller · Tuelektro':'Global (Vendor + Seller)'); }
+function negSerie(){
+  const n=D.neg;
+  if(CAR==='vendor') return {tot:n.v_ingresos, totLab:'Venta al consumidor · Vendor', sellin:n.v_sellin, sellinLab:'Sell-in de Vendor'};
+  if(CAR==='seller') return {tot:n.s_ventas, totLab:'Ventas del Seller sin IVA', sellin:n.s_margen, sellinLab:'Ventas del Seller sin IVA menos el 30 %'};
+  return {tot:n.total, totLab:'Venta al consumidor', sellin:n.fact, sellinLab:'Facturación de Corberó'};
+}
+const OTROS=['Confort','Deshumidif.'];
+function catSerie(k, met){
+  const c=D.cat[k];
+  if(CAR==='vendor') return c['v_'+met];
+  if(CAR==='seller') return c['s_'+met];
+  return c['v_'+met].map((x,i)=>x+c['s_'+met][i]);
+}
+function catParts(met){
+  const ks=Object.keys(D.cat).filter(k=>OTROS.indexOf(k)<0);
+  const parts=ks.map(k=>({n:k,c:D.cat[k].c,v:catSerie(k,met)}));
+  const otros=M.map((_,i)=>OTROS.reduce((a,k)=>a+catSerie(k,met)[i],0));
+  parts.push({n:'Otros (Confort y Deshumidificador)',c:'#9aa0a6',v:otros});
+  return parts.filter(p=>p.v.some(v=>v>0));
+}
+// métricas de publicidad de una vista (cada una es una serie por mes) y las del mismo mes de 2025 (solo Vendor tiene año anterior)
+function adsArr(m){ return {inv:m.inv, ven:m.ven, acos:m.acos, roas:m.roas, ped:m.ped, tick:m.tick, imp:m.imp, clk:m.clk, ctr:m.ctr, cpc:m.cpc, conv:m.ped.map((p,i)=>100*p/m.clk[i])}; }
+function adsY25(){
+  const y=D.yoy;
+  return {inv:y.inv, ven:y.ven, acos:y.inv.map((x,i)=>100*x/y.ven[i]), roas:y.ven.map((x,i)=>x/y.inv[i]), ped:y.ped, tick:y.ven.map((x,i)=>x/y.ped[i]),
+          imp:y.imp, clk:y.clk, ctr:y.clk.map((x,i)=>100*x/y.imp[i]), cpc:y.inv.map((x,i)=>x/y.clk[i]), conv:y.ped.map((x,i)=>100*x/y.clk[i])};
+}
+const DEFS=[ ['Inversión publicitaria','inv',eu0,false], ['Ventas por publicidad','ven',eu0,false], ['ACOS','acos',pc,true], ['ROAS','roas',v=>co(v.toFixed(2)),false],
+  ['Pedidos por publicidad','ped',num,false], ['Conversión (pedidos ÷ clics)','conv',v=>co(v.toFixed(2))+'%',false], ['Ticket medio de publicidad','tick',eu0,false],
+  ['Impresiones','imp',num,false], ['Clics','clk',num,false], ['CTR','ctr',v=>co(v.toFixed(2))+'%',false], ['CPC','cpc',v=>co(v.toFixed(2))+' €',true] ];
+// titular del mes (vista global): qué ha pasado en pedidos, ticket, ventas y ACOS, y qué canal pierde conversión
+function titularMes(){
+  if(CAR!=='glob') return '';
+  const p=j-1, g=adsArr(D.glob), v=adsArr(D.vendor), s=adsArr(D.seller);
+  const ch=(A,k)=>100*(A[k][j]/A[k][p]-1), dir=(x,a,b)=>x>=0?a:b, ab=x=>co(Math.abs(x).toFixed(1));
+  let t=`Pedidos por publicidad ${sg(ch(g,'ped'),1)}% y ticket medio ${sg(ch(g,'tick'),1)}%: las ventas por publicidad ${dir(ch(g,'ven'),'suben','bajan')} un ${ab(ch(g,'ven'))}% con un ${ab(ch(g,'inv'))}% ${dir(ch(g,'inv'),'más','menos')} de inversión, y el ACOS pasa del ${pc(g.acos[p])} al ${pc(g.acos[j])}.`;
+  const cv=[['Vendor',v],['Seller',s]].map(([n,A])=>[n,A,ch(A,'conv')]).sort((a,b)=>a[2]-b[2]), peor=cv[0];
+  if(peor[2]<=-5) t+=` <b>El problema está en ${peor[0]}:</b> su conversión (pedidos ÷ clics) pasa del ${co(peor[1].conv[p].toFixed(2))}% al ${co(peor[1].conv[j].toFixed(2))}%, con ${sg(ch(peor[1],'clk'),1)}% de clics, ${sg(ch(peor[1],'ped'),1)}% de pedidos y ${sg(ch(peor[1],'ven'),1)}% de ventas por publicidad.`;
+  const mejor=cv[cv.length-1]; if(mejor!==peor && mejor[2]>=5) t+=` ${mejor[0]} mejora: conversión del ${co(mejor[1].conv[p].toFixed(2))}% al ${co(mejor[1].conv[j].toFixed(2))}%.`;
+  return `<div class="info" style="margin-top:12px"><b>Lo que explica el mes.</b> ${t}</div>`;
+}
+
+function render(){
+  const m=D[CAR], p=j-1, nb=negSerie(), n=D.neg, A=adsArr(m), Y=(CAR==='vendor')?adsY25():null;
+  document.getElementById('vtxt').textContent = CAR==='vendor' ? 'Cuenta Vendor: lo que Amazon compra a Corberó.' : (CAR==='seller' ? 'Cuenta Seller (Tuelektro): venta directa al cliente final.' : 'Suma de las dos cuentas de Amazon de Corberó.');
+  document.getElementById('notaAds').textContent = `Resultados de Amazon Ads en ${FULL[j]} frente a ${FULL[p]}${CAR==='vendor'?' y frente a '+FULL[j]+' de 2025':''} · ${vistaNombre()}. Es lo que se invierte en anuncios y lo que esa inversión genera. ACOS = inversión ÷ ventas por publicidad · ROAS = ventas por publicidad ÷ inversión.`;
+  document.getElementById('titular').innerHTML = titularMes();
+  const V=adsArr(D.vendor), S=adsArr(D.seller);
+  document.getElementById('kpis').innerHTML=DEFS.map(d=>{
+    const k=d[1];
+    let extra=null;
+    if(k==='conv' && CAR==='glob') extra=`Vendor ${co(V.conv[p].toFixed(2))}% → <b>${co(V.conv[j].toFixed(2))}%</b><br>Seller ${co(S.conv[p].toFixed(2))}% → <b>${co(S.conv[j].toFixed(2))}%</b>`;
+    return tile(d[0],d[2](A[k][j]),[delta(A[k][j],A[k][p],d[3],'MoM'), Y?delta(A[k][j],Y[k][j],d[3],'YoY'):null],extra);
+  }).join('');
+  renderPorCanal();
+  hbars('repV',[{n:'Vendor · Corberó',v:D.vendor.ven[j],c:'#3b82c4'},{n:'Seller · Tuelektro',v:D.seller.ven[j],c:'#2fa37a'}],eu0);
+  hbars('repI',[{n:'Vendor · Corberó',v:D.vendor.inv[j],c:'#3b82c4'},{n:'Seller · Tuelektro',v:D.seller.inv[j],c:'#2fa37a'}],eu0);
+
+  // ---- negocio del mes (sell-in de Vendor + ventas del Seller sin IVA menos el 30 %)
+  const vn=nb.tot[j], vp=nb.tot[p];
+  const tacJ = vn==null?null:100*m.inv[j]/vn, tacP = nb.tot[p]==null?null:100*m.inv[p]/nb.tot[p];
+  const objM = n.objetivo[j];
+  let h='', pendientes=false;
+  const add=(ok,html,titulo)=>{ if(ok) h+=html; else { h+=tilePend(titulo); pendientes=true; } };
+  if(CAR==='glob'){
+    add(vn!=null, tile('Venta al consumidor',eu0(vn),[delta(vn,vp,false)],'Vendor (PVP sin IVA) + Seller sin IVA'), 'Venta al consumidor');
+    add(n.v_sellin[j]!=null, tile('Sell-in de Vendor',eu0(n.v_sellin[j]),[delta(n.v_sellin[j],n.v_sellin[p],false)],'lo que Amazon compra a Corberó'), 'Sell-in de Vendor');
+    add(n.s_margen[j]!=null, tile('Seller sin IVA menos el 30 %',eu0(n.s_margen[j]),[delta(n.s_margen[j],n.s_margen[p],false)],'ventas del Seller sin IVA × 0,7'), 'Seller sin IVA menos el 30 %');
+    const dF=delta(n.fact[j],n.fact[p],false), ok=n.fact[j]!=null&&n.fact[j]>=objM;
+    add(n.fact[j]!=null, `<div class="k"><div class="t">Facturación de Corberó</div><div class="v">${eu0(n.fact[j])}</div>${dF?`<div class="d ${dF[0]}">${dF[1]}</div>`:''}
+      <div class="d" style="color:${ok?'var(--ok)':'var(--bad)'}">${Math.round(100*n.fact[j]/objM)}% del objetivo del mes</div><div class="d fl">sell-in de Vendor + Seller sin IVA menos el 30 %</div></div>`, 'Facturación de Corberó');
+  } else if(CAR==='vendor'){
+    add(vn!=null, tile('Venta al consumidor · Vendor',eu0(vn),[delta(vn,vp,false)],'PVP sin IVA de lo vendido a clientes'), 'Venta al consumidor · Vendor');
+    add(n.v_sellin[j]!=null, tile('Sell-in de Vendor',eu0(n.v_sellin[j]),[delta(n.v_sellin[j],n.v_sellin[p],false)],'lo que Amazon compra a Corberó'), 'Sell-in de Vendor');
+  } else {
+    add(vn!=null, tile('Ventas del Seller sin IVA',eu0(vn),[delta(vn,vp,false)],'lo vendido por Tuelektro, sin IVA'), 'Ventas del Seller sin IVA');
+    add(n.s_margen[j]!=null, tile('Seller sin IVA menos el 30 %',eu0(n.s_margen[j]),[delta(n.s_margen[j],n.s_margen[p],false)],'lo que cuenta en la facturación'), 'Seller sin IVA menos el 30 %');
+  }
+  add(tacJ!=null, tile('TACOS',pc(tacJ),[tacP==null?null:delta(tacJ,tacP,true)],'inversión publicitaria ÷ venta al consumidor'), 'TACOS');
+  document.getElementById('kpisNeg').innerHTML=h;
+  document.getElementById('tagProv').innerHTML = D.prov ? 'provisional' : '';
+  document.getElementById('provNota').innerHTML = D.prov ? `<b>Cifras provisionales.</b> El sell-in de Vendor y las ventas del Seller de ${D.prov.mes} son provisionales y se contrastarán con el cierre del mes.` : '';
+  document.getElementById('pendNote').innerHTML = pendientes ? `<div class="warn" style="margin-top:12px"><b>Ventas de ${FULL[j]} pendientes de cierre.</b> Se calculan con el sell-in de Vendor y las ventas del Seller sin IVA del mes, que aún no están cerradas. La publicidad sí está cerrada.</div>` : '';
+
+  // ---- cumplimiento del objetivo (de cuenta). Dos bases: facturación (sell-in + Seller −30 %) y sell-out
+  const real=n.fact, obj=n.objetivo;
+  const nMes=real.filter(v=>v!=null).length;
+  const ytdR=real.filter(v=>v!=null).reduce((a,b)=>a+b,0);
+  const ytdO=obj.slice(0,nMes).reduce((a,b)=>a+b,0);
+  const proy=ytdR/nMes*12;
+  const lastR=real[nMes-1], lastO=obj[nMes-1];
+  const sellout=M.map((_,i)=>(n.v_cogs[i]==null||n.s_ventas[i]==null)?null:n.v_cogs[i]+n.s_ventas[i]);
+  const soY=sellout.slice(0,nMes).reduce((a,b)=>a+(b||0),0), soL=sellout[nMes-1];
+  document.getElementById('objBlock').innerHTML=`
+   <div class="kpis">
+     <div class="k"><div class="t">Facturación ${M[nMes-1]} 2026</div><div class="v"${ta(eu0(lastR))}>${eum(lastR)}</div>
+       <div class="d fl">objetivo ${eum(lastO)}</div></div>
+     <div class="k"><div class="t">Cumplimiento de ${FULL[nMes-1]}</div><div class="v ${lastR>=lastO?'up':'dn'}"
+       style="color:${lastR>=lastO?'var(--ok)':'var(--bad)'}">${Math.round(100*lastR/lastO)}%</div>
+       <div class="d fl">${lastR>=lastO?'por encima':'por debajo'} del objetivo</div></div>
+     <div class="k"><div class="t">Objetivo anual</div><div class="v"${ta(eu0(D.objAnual))}>${eum(D.objAnual)}</div>
+       <div class="d fl">plan del año</div></div>
+     <div class="k"><div class="t">Acumulado (${nMes} meses)</div><div class="v"${ta(eu0(ytdR))}>${eum(ytdR)}</div>
+       <div class="d fl">objetivo a la fecha ${eum(ytdO)}</div></div>
+     <div class="k"><div class="t">Cumplimiento acumulado</div><div class="v ${ytdR>=ytdO?'up':'dn'}"
+        style="color:${ytdR>=ytdO?'var(--ok)':'var(--bad)'}">${Math.round(100*ytdR/ytdO)}%</div>
+        <div class="d fl">${ytdR>=ytdO?'por encima':'por debajo'} del objetivo a la fecha</div></div>
+     <div class="k"><div class="t">Proyección anual</div><div class="v"${ta(eu0(proy))}>${eum(proy)}</div>
+       <div class="d ${proy>=D.objAnual?'up':'dn'}">${Math.round(100*proy/D.objAnual)}% del objetivo</div></div>
+   </div>
+   <div class="info">El objetivo anual es de <b>${eum(D.objAnual)}</b>, repartido en objetivos mensuales.
+   El acumulado y la proyección se calculan sobre los ${nMes} meses cerrados del año.${nMes<N?' '+CAP(FULL[nMes])+' queda pendiente hasta que se cierren las ventas del mes.':''}${D.prov?' Las cifras de '+D.prov.mes+' son provisionales.':''}${CAR!=='glob'?' El objetivo es de cuenta (Vendor + Seller), no por canal: esta parte no cambia con la vista.':''}</div>
+   <div class="info"><b>El cumplimiento, sobre dos bases.</b> Sobre la facturación (sell-in de Vendor + Seller sin IVA menos el 30 %), ${FULL[nMes-1]} es el <b>${Math.round(100*lastR/lastO)}%</b> del objetivo y el acumulado, el <b>${Math.round(100*ytdR/ytdO)}%</b>. Sobre sell-out (lo que se vende a los clientes: Vendor valorado a lo que Amazon paga a Corberó, más el Seller sin IVA), <b>${Math.round(100*soL/lastO)}%</b> y <b>${Math.round(100*soY/ytdO)}%</b> (${eum(soY)} frente a ${eum(ytdO)}).</div>`;
+  document.getElementById('chipObj').innerHTML=`Objetivo <b>10,1M</b> · ${Math.round(100*ytdR/D.objAnual)}% acum · ritmo ${co((proy/1e6).toFixed(1))}M`;
+
+  const NADA = M.map(()=>null);
+  let sParts, sLine, sNota, sDots=null;
+  if(CAR==='vendor'){ sParts=[{n:'Sell-in de Vendor',c:'#3b82c4',v:n.v_sellin}]; sLine=NADA; sNota='Sell-in del canal Vendor (lo que Amazon compra a Corberó). El objetivo es de cuenta, no por canal, así que no se traza aquí.'; }
+  else if(CAR==='seller'){ sParts=[{n:'Seller sin IVA menos el 30 %',c:'#2fa37a',v:n.s_margen}]; sLine=NADA; sNota='Ventas del Seller sin IVA menos el 30 %. El objetivo es de cuenta, no por canal, así que no se traza aquí.'; }
+  else { sParts=[{n:'Sell-in de Vendor',c:'#3b82c4',v:n.v_sellin},{n:'Seller sin IVA menos el 30 %',c:'#2fa37a',v:n.s_margen}]; sLine=obj; sDots=sellout;
+    sNota='Barras: facturación de Corberó (sell-in de Vendor + Seller sin IVA menos el 30 %). Línea naranja: objetivo del mes, con su importe y el % de facturación sobre objetivo encima de cada mes. Rombos: sell-out (Vendor valorado a lo que Amazon paga a Corberó + Seller sin IVA). Todo con la misma escala.'; }
+  document.getElementById('notaObj').textContent=sNota;
+  stackLine('chObj', sParts, sLine, {dots:sDots});
+
+  const parts=catParts('ven').map(p=>({n:p.n.indexOf('Otros')===0?'Otros':p.n,c:p.c,v:p.v.reduce((a,b)=>a+b,0)})).sort((a,b)=>b.v-a.v);
+  donut('chCat',parts);
+  document.getElementById('notaCat').textContent = 'Reparto de las ventas por publicidad por categoría, acumulado del año · ' + vistaNombre() + '. Otros = Confort y Deshumidificador, categorías estacionales.';
+
+  // ---- evolución del año (todo sigue la vista)
+  const pesoArr=M.map((_,i)=>nb.tot[i]==null?null:100*m.ven[i]/nb.tot[i]);
+  document.getElementById('tPeso').textContent = `Peso de la publicidad en las ventas · ${vistaNombre()}`;
+  pesoReal('chPeso', m.ven, nb.tot);
+  const pv=pesoArr.filter(v=>v!=null), iMax=pesoArr.indexOf(Math.max(...pv)), iMin=pesoArr.indexOf(Math.min(...pv));
+  document.getElementById('nPeso').innerHTML = `Qué parte de la venta al consumidor (${CAR==='vendor'?'PVP sin IVA de Vendor':(CAR==='seller'?'ventas del Seller sin IVA':'PVP sin IVA de Vendor + Seller sin IVA')}) llega a través de la publicidad. Es la misma base del TACOS. En ${FULL[j]}, el <b>${pc(pesoArr[j])}</b>${pesoArr[p]!=null?' (en '+FULL[p]+', el '+pc(pesoArr[p])+')':''}. Máximo del año: ${M[iMax]} (${pc(pesoArr[iMax])}); mínimo: ${M[iMin]} (${pc(pesoArr[iMin])}).`;
+  document.getElementById('tTacos').textContent = `TACOS vs ACOS · ${vistaNombre()}`;
+  const tac=M.map((_,i)=>nb.tot[i]==null?null:100*m.inv[i]/nb.tot[i]);
+  lines('chTacos',[{v:tac,c:'#3b82c4',n:'TACOS',f:pc},{v:m.acos,c:'#FF9900',n:'ACOS',f:pc}],{ref:15});
+  document.getElementById('chTacos').insertAdjacentHTML('beforeend',
+    `<div class="lgd"><span><i style="background:#3b82c4"></i>TACOS</span><span><i style="background:#FF9900"></i>ACOS</span><span><i style="background:#c0392b"></i>objetivo 15%</span></div>`);
+  renderEvo(A);
+  document.getElementById('tPar').textContent = `Inversión publicitaria y ventas por publicidad · ${vistaNombre()}`;
+  pares('chPar', [{n:'Ventas por publicidad',c:'#7f9bb8',v:m.ven}], [{n:'Inversión publicitaria',c:'#FF9900',v:m.inv}], {op:0.85,legR:true});
+  lines('chRoas',[{v:m.roas,c:'#2fa37a',n:'ROAS',f:v=>co(v.toFixed(2))}],{W:520,H:200});
+  lines('chCpc',[{v:m.cpc,c:'#8b6bb1',n:'CPC',f:v=>co(v.toFixed(2))+' €'}],{W:520,H:200});
+  stacked('chSplitI',[{n:'Vendor',v:D.vendor.inv,c:'#3b82c4'},{n:'Seller',v:D.seller.inv,c:'#2fa37a'}],{W:520,H:210});
+  stacked('chSplitV',[{n:'Vendor',v:D.vendor.ven,c:'#3b82c4'},{n:'Seller',v:D.seller.ven,c:'#2fa37a'}],{W:520,H:210});
+  const tI=sum(D.vendor.inv), sI=sum(D.seller.inv), tV=sum(D.vendor.ven), sV=sum(D.seller.ven);
+  document.getElementById('splitTxt').innerHTML=`<div class="info">Reparto acumulado 2026 (${N} meses):
+    <b>Inversión → Vendor ${Math.round(100*tI/(tI+sI))}% / Seller ${Math.round(100*sI/(tI+sI))}%</b> ·
+    Ventas por publicidad → Vendor ${Math.round(100*tV/(tV+sV))}% / Seller ${Math.round(100*sV/(tV+sV))}%
+    (objetivo inversión 60/40). En ${FULL[j]} el reparto de inversión fue
+    <b>Vendor ${Math.round(100*D.vendor.inv[j]/(D.vendor.inv[j]+D.seller.inv[j]))}% /
+    Seller ${Math.round(100*D.seller.inv[j]/(D.vendor.inv[j]+D.seller.inv[j]))}%</b>. Estos gráficos comparan los dos canales, por eso no cambian con la vista.</div>`;
+
+  const vs=n.v_sellin, ss=n.s_margen;
+  const depV=M.map((_,i)=>(vs[i]==null||ss[i]==null)?null:100*vs[i]/(vs[i]+ss[i]));
+  const depS=M.map((_,i)=>depV[i]==null?null:100-depV[i]);
+  lines('chDep',[{v:depV,c:'#3b82c4',n:'Vendor',f:pc},{v:depS,c:'#2fa37a',n:'Seller',f:pc},{v:M.map(()=>60),c:'#ddd',n:'objetivo 60%',f:pc}]);
+  document.getElementById('chDep').insertAdjacentHTML('beforeend',
+    `<div class="lgd"><span><i style="background:#3b82c4"></i>Vendor</span><span><i style="background:#2fa37a"></i>Seller</span><span><i style="background:#ddd"></i>objetivo 60%</span></div>`);
+  const li=depV.map((v,i)=>v==null?-1:i).filter(i=>i>=0).pop();
+  document.getElementById('depTxt').innerHTML=`<div class="info">En <b>${FULL[li]} de 2026</b> el reparto fue
+    <b>Vendor ${co(depV[li].toFixed(1))}% / Seller ${co(depS[li].toFixed(1))}%</b>, frente al marco de referencia 60/40.
+    El peso del canal Vendor ${depV[li]>=depV[li-1]?'sube':'baja'} ${co(Math.abs(depV[li]-depV[li-1]).toFixed(1))} puntos respecto a ${FULL[li-1]}, y ${depV[li]<60?'sigue':'queda'} ${co(Math.abs(60-depV[li]).toFixed(1))} puntos ${depV[li]<60?'por debajo':'por encima'} del 60% de referencia.${li<j?' '+CAP(FULL[j])+' queda pendiente de cierre.':''} Este gráfico compara los dos canales, por eso no cambia con la vista.</div>`;
+
+  renderYoY();
+  renderSOV();
+  renderCat();
+  document.getElementById('foot').innerHTML=`roicos · Corberó · Amazon Ads · ${FULL[j]} 2026<br>
+   Inversión publicitaria ${eu0(D.glob.inv[j])} · ventas por publicidad ${eu0(D.glob.ven[j])} ·
+   ACOS ${pc(D.glob.acos[j])} · ${num(D.glob.ped[j])} pedidos por publicidad · venta total al consumidor ${D.neg.total[j]==null?'pendiente de cierre':eu0(D.neg.total[j])}${D.prov?' (provisional)':''}.`;
+}
+// Vista global: qué ha cambiado en cada canal (es lo que explica el total)
+function renderPorCanal(){
+  const box=document.getElementById('porCanal');
+  if(CAR!=='glob'){ box.innerHTML=''; return; }
+  const p=j-1, v=D.vendor, s=D.seller, g=D.glob;
+  const V=adsArr(v), S=adsArr(s);
+  const cell=(A,k,f,inv)=>{ const d=delta(A[k][j],A[k][p],inv,''); return `<td>${f(A[k][j])}${d?`<br><span class="chg ${d[0]}" style="margin-left:0">${d[1].replace(/ $/,'')}</span>`:''}</td>`; };
+  const cellR=(A,k,f)=>`<td>${f(A[k][p])} → <b>${f(A[k][j])}</b></td>`;
+  const fila=(n,A)=>`<tr><td><b>${n}</b></td>${cell(A,'inv',eu0,false)}${cell(A,'imp',num,false)}${cell(A,'clk',num,false)}${cell(A,'ped',num,false)}${cellR(A,'conv',x=>co(x.toFixed(2))+'%')}${cell(A,'tick',eu0,false)}${cell(A,'ven',eu0,false)}${cellR(A,'acos',pc)}</tr>`;
+  const w1v=v.ped[j]/(v.ped[j]+s.ped[j]), w0v=v.ped[p]/(v.ped[p]+s.ped[p]), w1s=1-w1v, w0s=1-w0v, base=g.tick[p];
+  const mix=((w1v*v.tick[p]+w1s*s.tick[p])-(w0v*v.tick[p]+w0s*s.tick[p]))/base*100;
+  const intra=(w1v*(v.tick[j]-v.tick[p])+w1s*(s.tick[j]-s.tick[p]))/base*100;
+  const dT=100*(g.tick[j]/g.tick[p]-1);
+  const nota = Math.abs(dT)>=2 ? `<div class="note" style="margin-top:8px">El ticket medio de la cuenta ${dT>=0?'sube':'cae'} un ${co(Math.abs(dT).toFixed(1))}%: ${co(Math.abs(mix).toFixed(1))} puntos ${mix>=0?'suben':'caen'} por el cambio de mezcla (Vendor pasa del ${Math.round(100*w0v)}% al ${Math.round(100*w1v)}% de los pedidos, con un ticket medio de ${eu0(v.tick[j])} frente a ${eu0(s.tick[j])} en Seller) y ${co(Math.abs(intra).toFixed(1))} puntos ${intra>=0?'suben':'caen'} por el ticket dentro de cada canal (Vendor ${sg(100*(v.tick[j]/v.tick[p]-1),1)}%, Seller ${sg(100*(s.tick[j]/s.tick[p]-1),1)}%).</div>` : '';
+  box.innerHTML=`<div class="card"><h2 style="font-size:15px">Qué ha cambiado en cada canal frente a ${FULL[p]}</h2>
+    <div class="note">El total de la cuenta es la suma de los dos canales: aquí se ve cuál explica cada movimiento. Conversión = pedidos ÷ clics.</div>
+    <table><thead><tr><th>Canal</th><th>Inversión</th><th>Impresiones</th><th>Clics</th><th>Pedidos</th><th>Conversión</th><th>Ticket medio</th><th>Ventas por publicidad</th><th>ACOS</th></tr></thead>
+    <tbody>${fila('Vendor · Corberó',V)}${fila('Seller · Tuelektro',S)}</tbody></table>${nota}</div>`;
+}
+// Evolución mes a mes (con la variación frente al mes anterior)
+function renderEvo(A){
+  const p=j-1;
+  document.getElementById('nEvo').textContent = `${vistaNombre()}. Mes a mes, con la variación frente al mes anterior (MoM). La comparación con el mismo mes de 2025 está más abajo, en «Comparativa con el año anterior». Conversión = pedidos ÷ clics.`;
+  const CORTO={'Inversión publicitaria':'Inversión','Pedidos por publicidad':'Pedidos','Ticket medio de publicidad':'Ticket medio','Conversión (pedidos ÷ clics)':'Conversión'};
+  const filas=DEFS.map(d=>{
+    const k=d[1], f=d[2], inv=d[3];
+    const cells=M.map((_,i)=>`<td${i===j?' style="font-weight:700"':''}>${f(A[k][i])}</td>`).join('');
+    const dm=delta(A[k][j],A[k][p],inv,'');
+    const cd=x=>x?`<td class="chg ${x[0]}" style="font-size:12px">${x[1].replace(/ $/,'')}</td>`:'<td class="chg fl">—</td>';
+    return `<tr><td>${CORTO[d[0]]||d[0]}</td>${cells}${cd(dm)}</tr>`;
+  }).join('');
+  document.getElementById('tblEvo').innerHTML=`<table><thead><tr><th>Amazon Ads</th>${M.map(x=>`<th>${x}</th>`).join('')}<th>vs ${FULL[p].slice(0,3)} (MoM)</th></tr></thead><tbody>${filas}</tbody></table>`;
+}
+function renderYoY(){
+  const y=D.yoy, nm=y.ven.length, box=document.getElementById('yoyBox');
+  if(CAR==='seller'){
+    document.getElementById('yoyNota').textContent='Mismo periodo de 2025 frente a 2026.';
+    box.innerHTML=`<div class="info"><b>El Seller (Tuelektro) arrancó en octubre de 2025</b>, así que todavía no hay un año anterior con el que comparar: el primer comparable llegará con octubre de 2026. Su evolución mes a mes está en la tabla y en los gráficos de arriba.</div>`;
+    return;
+  }
+  document.getElementById('yoyNota').textContent = CAR==='vendor' ? 'Mismo periodo de 2025 frente a 2026, en el canal Vendor.' : 'Mismo periodo de 2025 frente a 2026, en el canal Vendor, el único que existía en 2025.';
+  const v = D.vendor;
+  const i25=sum(y.inv), i26=sum(v.inv.slice(0,nm));
+  const v25=sum(y.ven), v26=sum(v.ven.slice(0,nm));
+  const p25=sum(y.ped), p26=sum(v.ped.slice(0,nm));
+  const a25=100*i25/v25, a26=100*i26/v26;
+  const d=(a,b)=>{const x=100*(a/b-1);return `<div class="d ${x>=0?'up':'dn'}" style="color:${x>=0?'var(--ok)':'var(--bad)'}">${x>=0?'▲ ':'▼ '}${Math.abs(x).toFixed(0)}% vs 2025</div>`;};
+  const cre=v.ven.slice(0,nm).map((x,i)=>100*(x/y.ven[i]-1));
+  const invd=v.inv.slice(0,nm).map((x,i)=>100*(x/y.inv[i]-1));
+  const minimo = cre[nm-1]===Math.min(...cre);
+  const aviso = CAR==='glob' ? `<div class="warn" style="margin-top:12px"><b>Por qué aquí sale el Vendor y no la cuenta completa.</b> En 2025 solo existía Vendor: el Seller empezó en octubre de 2025. Comparar la cuenta completa de 2026 (${eu0(sum(D.glob.ven.slice(0,nm)))} en ventas por publicidad) con 2025 (${eu0(v25)}) mezclaría un canal nuevo; el comparable real es Vendor.</div>` : '';
+  box.innerHTML=`${aviso}<div class="kpis">
+    <div class="k"><div class="t">Ventas por publicidad · ${nm} meses</div><div class="v">${eu0(v26)}</div>${d(v26,v25)}<div class="d fl">2025: ${eu0(v25)}</div></div>
+    <div class="k"><div class="t">Inversión publicitaria · ${nm} meses</div><div class="v">${eu0(i26)}</div>${d(i26,i25)}<div class="d fl">2025: ${eu0(i25)}</div></div>
+    <div class="k"><div class="t">Pedidos por publicidad · ${nm} meses</div><div class="v">${num(p26)}</div>${d(p26,p25)}<div class="d fl">2025: ${num(p25)}</div></div>
+    <div class="k"><div class="t">ACOS · ${nm} meses</div><div class="v">${pc(a26)}</div>
+      <div class="d ${a26<=a25?'up':'dn'}" style="color:${a26<=a25?'var(--ok)':'var(--bad)'}">${a26<=a25?'mejora':'empeora'} frente a 2025</div>
+      <div class="d fl">2025: ${pc(a25)}</div></div></div>
+    <div class="card"><h2 style="font-size:15px">Ventas por publicidad: 2026 frente a 2025</h2><div class="note">Cada mes, dos columnas con la misma escala: 2025 en gris y 2026 en naranja. Pasa el ratón por encima para ver la variación.</div><div id="chYoY"></div></div>
+    <div class="card"><h2 style="font-size:15px">Inversión publicitaria: 2026 frente a 2025</h2><div class="note">Lo mismo, con la inversión.</div><div id="chYoYinv"></div></div>
+    <div class="card"><h2 style="font-size:15px">ACOS: 2026 frente a 2025</h2><div class="note">Lo mismo, con el ACOS de cada mes (inversión ÷ ventas por publicidad): cuanto más bajo, mejor. La línea roja marca el objetivo del 15%.</div><div id="chYoYacos"></div></div>
+    <div id="yoyLect"></div>`;
+  dobles('chYoY', {n:'2026',c:'#FF9900',v:v.ven.slice(0,nm)}, {n:'2025',c:'#b9c6d3',v:y.ven});
+  dobles('chYoYinv', {n:'2026',c:'#FF9900',v:v.inv.slice(0,nm)}, {n:'2025',c:'#b9c6d3',v:y.inv});
+  const ac26=v.inv.slice(0,nm).map((x,i)=>v.ven[i]>0?100*x/v.ven[i]:null), ac25=y.inv.map((x,i)=>y.ven[i]>0?100*x/y.ven[i]:null);
+  const dac=ac26.map((x,i)=>(x==null||ac25[i]==null)?null:x-ac25[i]), mejor=dac.filter(x=>x!=null&&x<0).length;
+  dobles('chYoYacos', {n:'2026',c:'#FF9900',v:ac26,inv:v.inv,ven:v.ven}, {n:'2025',c:'#b9c6d3',v:ac25,inv:y.inv,ven:y.ven},
+    {f:pc, lab:x=>co(x.toFixed(1)), axf:x=>co(x.toFixed(0))+'%', ref:15, bwf:0.36, max:Math.max(16,Math.ceil(Math.max(...ac26,...ac25)*1.15/4)*4),
+     dvf:(a,b,n)=>' ('+sg(a-b,1)+' puntos frente a '+n+')', tx:(i,se)=>'<br>Inversión '+eu0(se.inv[i])+' ÷ ventas por publicidad '+eu0(se.ven[i])});
+  document.getElementById('yoyLect').innerHTML=`<div class="info">
+    <b>Cómo va el año (Vendor).</b> Las ventas por publicidad ${v26>=v25?'crecen':'caen'} un
+    <b>${Math.abs(100*(v26/v25-1)).toFixed(0)}%</b> frente al mismo periodo de 2025, con el ACOS ${a26<=a25?'mejorando':'empeorando'} de
+    ${pc(a25)} a ${pc(a26)}.${cre[nm-1]<cre[0] ? ' Pero el crecimiento se ha ido estrechando a lo largo del año: de <b>'+sg(cre[0])+'%</b> en '+M[0]+' a <b>'+sg(cre[nm-1])+'%</b> en '+M[nm-1]+'.' : ''}
+    ${cre[nm-1]<0 && cre.slice(0,nm-1).every(x=>x>=0) ? CAP(FULL[nm-1])+' es el primer mes del año en el que las ventas por publicidad quedan <b>por debajo</b> de las del año pasado.' : ''}
+    ${(()=>{ let k=0; for(let i=nm-1;i>=0&&invd[i]<0;i--) k++;
+         const cola = minimo ? ', coincidiendo con el crecimiento más bajo de todo el año' : '';
+         if(k===0) return 'La inversión de '+FULL[nm-1]+' sigue siendo <b>mayor</b> que la del año pasado ('+sg(invd[nm-1])+'%).';
+         if(k===1) return 'Y '+FULL[nm-1]+' es el primer mes del año en el que se invierte <b>menos</b> que el año pasado ('+sg(invd[nm-1])+'%)'+cola+'.';
+         return 'Y '+FULL[nm-1]+' es el '+(['','','segundo','tercer','cuarto','quinto','sexto','séptimo','octavo','noveno','décimo'][k]||('mes número '+k))+' mes seguido en el que se invierte <b>menos</b> que el año pasado ('+invd.slice(nm-k).map((x,i)=>M[nm-k+i]+' '+sg(x)+'%').join(', ')+')'+cola+'.'; })()}
+    El ACOS es más bajo que el de 2025 en <b>${mejor} de los ${nm} meses</b>; en ${FULL[nm-1]}, ${pc(ac26[nm-1])} frente a ${pc(ac25[nm-1])} (${sg(dac[nm-1],1)} puntos).</div>`;
+}
+// ---------- Visibilidad: cuota total, natural y pagada de septiembre, con su evolución
+const SOVC=['Frío','Lavado','Cocción'];
+const shr = v => co(v.toFixed(1))+'%';
+const rel = (a,b) => (b>0.005 ? 100*(a/b-1) : null);
+// evolución de una cuota frente al mes anterior: en % y, entre paréntesis, en puntos de cuota; en las cuotas subir es bueno
+function evoSOV(a,b){
+  const r=rel(a,b), pp=a-b;
+  if(r==null || Math.abs(pp)<0.005) return '<span class="chg fl" style="margin-left:0">—</span>';
+  const cls=Math.abs(pp)<0.05?'fl':(pp>0?'up':'dn');
+  return `<span class="chg ${cls}" style="margin-left:0">${pp>=0?'▲':'▼'} ${co(Math.abs(r).toFixed(1))}% <span style="font-weight:400">(${Math.abs(pp)<0.05?'0,0':sg(pp,1)} pp)</span></span>`;
+}
+// si el movimiento de la cuota total lo explica la natural o la pagada
+function explicaSOV(c){
+  const m=D.sovm[c], a=j-1, b=j, dT=m.tot[b]-m.tot[a], dN=m.org[b]-m.org[a], dP=m.pag[b]-m.pag[a], f=x=>sg(x,1)+' pp', ab=x=>co(Math.abs(x).toFixed(1));
+  const cab = Math.abs(dT)<0.15 ? 'La cuota total casi no cambia' : 'La cuota total '+(dT>0?'sube':'baja')+' '+ab(dT)+' pp';
+  const causa = dN*dP>0 ? (dN>0?'suben':'bajan')+' las dos y pesa más la '+(Math.abs(dP)>Math.abs(dN)?'pagada':'natural')
+                        : 'la natural '+(dN>0?'sube':'baja')+' y la pagada '+(dP>0?'sube':'baja');
+  const marca=(arr,n)=>{ const mn=Math.min(...arr), mx=Math.max(...arr); return arr[b]===mn?`${n} está en su mínimo del año`:(arr[b]===mx?`${n} está en su máximo del año`:''); };
+  const ext=[marca(m.org,'la natural'),marca(m.pag,'la pagada')].filter(Boolean);
+  const aTot=(Math.min(...m.tot)===m.tot[b]?' (mínimo del año)':(Math.max(...m.tot)===m.tot[b]?' (máximo del año)':''));
+  return `<b>${cab}${aTot}:</b> ${causa} (natural ${f(dN)}, pagada ${f(dP)}).`+(ext.length?' '+CAP(ext.join('; '))+'.':'');
+}
+// qué destaca por formato (Sponsored Products y Sponsored Brands)
+function formatoSOV(c){
+  const m=D.sovm[c], a=j-1, b=j;
+  const frase=(nombre,arr)=>{
+    const mx=Math.max(...arr), mes=FULL[arr.indexOf(mx)], pp=arr[b]-arr[a], r=rel(arr[b],arr[a]);
+    if(mx<0.05) return {pp:0, t:`no tenemos presencia en ${nombre} (0% en los nueve meses)`};
+    if(Math.abs(pp)<0.05) return {pp:Math.abs(pp), t:`${nombre} se mantiene en el ${shr(arr[b])}`+(arr[b]<0.5*mx?`, lejos del ${shr(mx)} de ${mes}`:'')};
+    return {pp:Math.abs(pp), t:`${nombre} ${pp>0?'sube':'baja'} del ${shr(arr[a])} al ${shr(arr[b])}`+(r!=null?` (${sg(r,0)}%)`:'')+(arr[b]<0.5*mx?`, desde el ${shr(mx)} de ${mes}`:'')};
+  };
+  const f=[frase('Sponsored Products',m.sp),frase('Sponsored Brands',m.sb)].sort((x,y)=>y.pp-x.pp);
+  return CAP(f[0].t)+'; '+f[1].t+'.';
+}
+function sovResumen(){
+  const a=j-1, b=j;
+  const celda=arr=>`<td><b style="font-size:15px">${shr(arr[b])}</b><br>${evoSOV(arr[b],arr[a])}</td>`;
+  const filas=SOVC.map(c=>{
+    const m=D.sovm[c], s=D.sov[c], mejora=s.puesto<s.puestoAgo, igual=s.puesto===s.puestoAgo;
+    const pu=`<b>${s.puesto}.º</b> de ${s.marcas} marcas<br>`+(igual?`<span class="chg fl" style="margin-left:0">igual que en ${FULL[a]}</span>`:`<span class="chg ${mejora?'up':'dn'}" style="margin-left:0">${mejora?'▲':'▼'} era el ${s.puestoAgo}.º</span>`);
+    return `<tr><td><b>${c}</b></td><td>${pu}</td>${celda(m.tot)}${celda(m.org)}${celda(m.pag)}${celda(m.sp)}${celda(m.sb)}</tr>`;
+  }).join('');
+  document.getElementById('sovResumen').innerHTML=`<h2 style="font-size:15px">${CAP(FULL[b])}: cuota total, natural y pagada, frente a ${FULL[a]}</h2>
+    <div class="note">En cada celda, la cuota de ${FULL[b]}, su variación en % frente a ${FULL[a]} y, entre paréntesis, en puntos de cuota (pp). La cuota de Sponsored Products y la de Sponsored Brands miden el porcentaje de los espacios de cada formato que ocupamos: no suman a la pagada.</div>
+    <div style="overflow-x:auto"><table><thead><tr><th>Categoría</th><th>Puesto</th><th>Cuota total</th><th>Natural</th><th>Pagada</th><th>Sponsored Products</th><th>Sponsored Brands</th></tr></thead><tbody>${filas}</tbody></table></div>`;
+}
+function sovFormato(){
+  document.getElementById('sovFormato').innerHTML=`<div class="info" style="margin-top:12px"><b>Qué explica el movimiento: natural o pagada, y qué destaca por formato.</b><ul style="margin:6px 0 0 18px">`
+    +SOVC.map(c=>`<li style="margin-bottom:5px"><b>${c}.</b> ${explicaSOV(c)} <i>Por formato:</i> ${formatoSOV(c)}</li>`).join('')
+    +`</ul><div style="margin-top:6px;font-size:12.5px">Las Sponsored Brands se publican solo desde la cuenta Vendor; la Seller trabaja solo con Sponsored Products.</div></div>`;
+}
+// evolución enero-septiembre de la cuota natural y la pagada (una gráfica por categoría)
+function sovLineas(){
+  document.getElementById('sovLineas').innerHTML=SOVC.map((c,i)=>`<div class="card"><h2 style="font-size:15px;margin-bottom:6px">${c}</h2><div id="sovL${i}"></div></div>`).join('');
+  document.getElementById('sovLgd').innerHTML=`<div class="lgd"><span><i style="background:#1A1A1A"></i>Natural</span><span><i style="background:#FF9900"></i>Pagada</span><span><i style="background:#9aa0a6"></i>Cuota total (línea discontinua)</span></div>`;
+  SOVC.forEach((c,i)=>{
+    const m=D.sovm[c];
+    const tip=arr=>k=>{ const r=k>0?rel(arr[k],arr[k-1]):null; return r==null?'':'<br>'+(arr[k]>=arr[k-1]?'▲ ':'▼ ')+co(Math.abs(r).toFixed(1))+'% frente a '+FULL[k-1]; };
+    const altoN = m.org[j]>=m.pag[j];
+    lines('sovL'+i,[{v:m.tot,c:'#9aa0a6',n:'Cuota total',f:shr,dash:true,w:1.8,tip:tip(m.tot)},
+                    {v:m.org,c:'#1A1A1A',n:'Natural',f:shr,lab:true,dy:altoN?-3:6,tip:tip(m.org)},
+                    {v:m.pag,c:'#FF9900',n:'Pagada',f:shr,lab:true,dy:altoN?6:-3,tip:tip(m.pag)}],{W:380,H:240,axf:v=>co(v.toFixed(0))+'%',lab:true});
+  });
+}
+// mes a mes de una categoría: visibilidad de la marca y, aparte, inversión y ACOS de Vendor y de Seller
+let SOVSEL='Lavado';
+function sovDetalle(){
+  const c=SOVSEL, m=D.sovm[c], d=D.cat[c], a=j-1, b=j;
+  document.getElementById('segSov').innerHTML=SOVC.map(x=>`<button data-c="${x}" class="${x===c?'on':''}">${x}</button>`).join('');
+  document.querySelectorAll('#segSov button').forEach(bt=>bt.onclick=()=>{ SOVSEL=bt.dataset.c; sovDetalle(); });
+  const fila=(nom,arr,f,inv)=>{
+    const dl=delta(arr[b],arr[a],inv,'');
+    return `<tr><td>${nom}</td>${arr.map((v,i)=>`<td${i===b?' style="font-weight:700"':''}>${v==null?'—':f(v)}</td>`).join('')}<td class="chg ${dl?dl[0]:'fl'}" style="font-size:12px">${dl?dl[1].replace(/ $/,''):'—'}</td></tr>`;
+  };
+  const grupo=t=>`<tr><td colspan="${M.length+2}" style="text-align:left;background:#f4f4f2;font-weight:600;font-size:12px">${t}</td></tr>`;
+  const acos=p=>M.map((_,k)=>d[p+'ven'][k]>0?100*d[p+'inv'][k]/d[p+'ven'][k]:null);
+  document.getElementById('sovDetalle').innerHTML=`<table><thead><tr><th>${c}</th>${M.map(x=>`<th>${x}</th>`).join('')}<th>vs ${FULL[a].slice(0,3)}</th></tr></thead><tbody>`
+    +grupo('Visibilidad en las búsquedas · la marca, Vendor y Seller juntos')
+    +fila('Cuota total',m.tot,shr,false)+fila('Natural',m.org,shr,false)+fila('Pagada',m.pag,shr,false)
+    +fila('Sponsored Products',m.sp,shr,false)+fila('Sponsored Brands',m.sb,shr,false)
+    +grupo('Publicidad · cuenta Vendor')+fila('Inversión',d.v_inv,eu0,false)+fila('ACOS',acos('v_'),pc,true)
+    +grupo('Publicidad · cuenta Seller')+fila('Inversión',d.s_inv,eu0,false)+fila('ACOS',acos('s_'),pc,true)
+    +`</tbody></table>`;
+}
+function renderSOV(){
+  const ORD=SOVC;
+  const chg=(d)=>{ if(d==null) return ''; const c=Math.abs(d)<0.05?'fl':(d>0?'up':'dn'); return `<span class="chg ${c}">(${sg(d,1)} pp)</span>`; };
+  sovResumen(); sovFormato(); sovLineas(); sovDetalle();
+  document.getElementById('sovComp').innerHTML = `<div class="gr2">` + ORD.map(c=>{
+    const s=D.sov[c], mx=Math.max(...s.comp.map(x=>x[1]));
+    return `<div class="card"><h2 style="font-size:15px">${c}</h2>
+      <div class="note">${s.marcas} marcas compiten en esta categoría</div>` +
+      s.comp.map(([b,v,d])=>{
+        const yo = b==='Corberó';
+        return `<div style="margin:9px 0"><div style="display:flex;justify-content:space-between;font-size:12.5px">
+          <span style="${yo?'font-weight:700;color:var(--bk)':''}">${b}</span>
+          <b style="${yo?'color:var(--or)':''}">${co(v.toFixed(1))}% ${chg(d)}</b></div>
+          <div class="prog"><i style="width:${100*v/mx}%;background:${yo?'var(--or)':'#c9d6e2'}"></i></div></div>`;
+      }).join('') + `</div>`;}).join('') + `</div>`;
+  document.getElementById('sovKw').innerHTML = `<table><thead>
+    <tr><th>Búsqueda</th><th>Categoría</th><th>Cuota total</th><th>Cuota natural</th><th>Situación</th></tr>
+    </thead><tbody>` + D.sovkw.map(([cat,kw,tot,org,est,d])=>{
+      const bad = est.indexOf('ausentes')>=0 || est.indexOf('baja')>=0;
+      return `<tr><td><b>${kw}</b></td><td>${cat}</td>
+        <td style="text-align:right">${co(tot.toFixed(1))}% ${chg(d)}</td>
+        <td style="text-align:right">${co(org.toFixed(1))}%</td>
+        <td style="color:${bad?'var(--bad)':'var(--ok)'};font-weight:600">${est}</td></tr>`;
+    }).join('') + `</tbody></table>`;
+}
+function acosCls(a){ return a==null?'':(a<=12?'ac-ok':(a<=15?'ac-md':'ac-bad')); }
+function renderCat(){
+  const ks=Object.keys(D.cat);
+  document.getElementById('notaCatBar').textContent = 'Inversión publicitaria, ventas por publicidad y ACOS de cada categoría · ' + vistaNombre() + '. Cambia con el selector de vista de arriba. Pasa el ratón por encima de los gráficos para ver el importe y el porcentaje.';
+  const L=catParts('ven'), R=catParts('inv');
+  pares('chCatPar', L, R, {op:0.5,dual:true});
+  const ser=['Frío','Lavado','Cocción','Marca y otros'].map(k=>{
+    const iv=catSerie(k,'inv'), vn=catSerie(k,'ven');
+    return {n:k,c:D.cat[k].c,f:pc,v:iv.map((x,i)=>vn[i]>0?100*x/vn[i]:null)};
+  }).filter(s=>s.v.some(v=>v!=null));
+  lines('chCatAcos', ser, {ref:15,H:230});
+  document.getElementById('chCatAcos').insertAdjacentHTML('beforeend',
+    `<div class="lgd">`+ser.map(s=>`<span><i style="background:${s.c}"></i>${s.n}</span>`).join('')+`<span><i style="background:#c0392b"></i>objetivo 15%</span></div>`);
+  let rows=ks.map(k=>{
+    const iv=catSerie(k,'inv'), vn=catSerie(k,'ven');
+    const vj=vn[j],vp=vn[j-1],ij=iv[j],ip=iv[j-1];
+    if(!(vj||vp||ij||ip)) return '';
+    const aj=vj?100*ij/vj:null, ap=vp?100*ip/vp:null;
+    return `<tr><td><span class="dot" style="background:${D.cat[k].c}"></span>${k}</td>
+      <td>${eu0(ij)}</td><td>${eu0(vj)}</td><td class="${acosCls(aj)}">${aj!=null?pc(aj):'—'}</td>
+      <td>${eu0(ip)}</td><td>${eu0(vp)}</td><td class="${acosCls(ap)}">${ap!=null?pc(ap):'—'}</td></tr>`;}).join('');
+  const TI=ks.reduce((a,k)=>a+catSerie(k,'inv')[j],0), TV=ks.reduce((a,k)=>a+catSerie(k,'ven')[j],0);
+  const PI=ks.reduce((a,k)=>a+catSerie(k,'inv')[j-1],0), PV=ks.reduce((a,k)=>a+catSerie(k,'ven')[j-1],0);
+  document.getElementById('tblCat').innerHTML=`<table><thead>
+    <tr><th>Categoría</th><th colspan="3" style="text-align:center">${M[j]} 26</th><th colspan="3" style="text-align:center">${M[j-1]} 26</th></tr>
+    <tr><th></th><th>Inversión</th><th>Ventas por publicidad</th><th>ACOS</th>
+    <th>Inversión</th><th>Ventas por publicidad</th><th>ACOS</th></tr>
+    </thead><tbody>${rows}
+    <tr class="tot"><td>TOTAL</td><td>${eu0(TI)}</td><td>${eu0(TV)}</td><td class="${acosCls(100*TI/TV)}">${pc(100*TI/TV)}</td>
+    <td>${eu0(PI)}</td><td>${eu0(PV)}</td><td class="${acosCls(100*PI/PV)}">${pc(100*PI/PV)}</td></tr></tbody></table>
+    <div class="note" style="margin-top:8px">ACOS: verde hasta el 12%, ámbar entre el 12% y el 15% y rojo por encima del objetivo del 15%.</div>`;
+}
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
+  document.querySelectorAll('.pane').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on'); document.getElementById(b.dataset.p).classList.add('on');
+  document.getElementById('barVista').style.display = (b.dataset.p==='p3') ? 'none' : '';
+});
+document.querySelectorAll('#segC button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('#segC button').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on'); CAR=b.dataset.c; render();
+});
+// globo con el dato al pasar el ratón por encima de cualquier barra, punto o porción
+(function(){
+  const tip=document.getElementById('tip');
+  document.addEventListener('mousemove',e=>{
+    const t=e.target.closest ? e.target.closest('[data-tip]') : null;
+    if(!t){ tip.style.display='none'; return; }
+    tip.innerHTML=t.getAttribute('data-tip'); tip.style.display='block';
+    const r=tip.getBoundingClientRect(); let x=e.clientX+14, y=e.clientY+14;
+    if(x+r.width>window.innerWidth-8) x=e.clientX-r.width-14;
+    if(y+r.height>window.innerHeight-8) y=e.clientY-r.height-14;
+    tip.style.left=Math.max(4,x)+'px'; tip.style.top=Math.max(4,y)+'px';
+  });
+  window.addEventListener('scroll',()=>{ tip.style.display='none'; },true);
+})();
+render();
+
+</script>
+
+</body></html>
